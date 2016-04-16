@@ -31,9 +31,9 @@ us_civil_war = Category.create(name: 'US Civil War')
 
 # SPANISH
 
-spanish_101 = Deck.create(name: 'Spanish 101')
-spanish_food = Deck.create(name: 'Spanish - Food')
-spanish_getting_around = Deck.create(name: 'Spanish - Getting Around')
+spanish_101 = Deck.create(name: 'Spanish 101', category_id: 7)
+spanish_food = Deck.create(name: 'Spanish - Food', category_id: 7)
+spanish_getting_around = Deck.create(name: 'Spanish - Getting Around', category_id: 1)
 
 # FRENCH
 

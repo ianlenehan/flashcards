@@ -3,11 +3,17 @@ var app = app || {};
 app.CategoryView = Backbone.View.extend({
 
   el: '#categoryList',
+  events: {
+    'click .category' : 'showDecks'
+  },
 
+  showDecks: function(e) {
+    var categoryId = (e.currentTarget.dataset.categoryid);
+    app.router.navigate('/category/'+ categoryId, true);
+  },
   render: function () {
-    // var name = this.collection.models[0].attributes.name;
     _.each(this.collection.models, function (category) {
-      $('#categoryList').append('<p>' + category.attributes.name + '</p>');
+      $('#categoryList').append('<div class="category" data-categoryid="'+category.attributes.id+'">' + category.attributes.name + '</div>');
     });
 
   }
