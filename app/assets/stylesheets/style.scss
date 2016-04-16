@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+
+.nav-bar {
+  background: gainsboro;
+  padding: 10px;
+}
+
+#admin-links {
+  display: none;
+  z-index: 100000;
+  color: black;
+}
