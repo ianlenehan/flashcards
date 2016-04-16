@@ -3,16 +3,15 @@ var app = app || {};
 app.AppView = Backbone.View.extend({
   el: '#main',
 
-  render: function () {
+  render: function() {
     var appViewTemplate = $('#appViewTemplate').html();
-    console.log(appViewTemplate);
     this.$el.html(appViewTemplate);
-
-    var categoryView = new app.CategoryView();
-    categoryView.render();
 
     var sidebarView = new app.SidebarView();
     sidebarView.render();
+
+    // var categoryView = new app.CategoryView();
+    // categoryView.render();
   }
 
 });
