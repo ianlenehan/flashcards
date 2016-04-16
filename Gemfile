@@ -31,6 +31,7 @@ gem 'cloudinary'
 gem 'animate-rails'
 gem 'hover-rails', '~> 2.0', '>= 2.0.2'
 gem 'pry-rails'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
