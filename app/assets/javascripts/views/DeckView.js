@@ -5,9 +5,12 @@ app.DeckView = Backbone.View.extend({
 
   render: function() {
     $('#deckList').remove();
+    _.each(this.collection.models, function (card) {
 
-    _.each(this.collection, function (deck) {
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '</div>');
+      var cardObject = card.attributes;
+      var cardTemplate = $('#cardTemplate').html();
+      var cardHTML = _.template( cardTemplate );
+      $('#cards').append( cardHTML( cardObject ) );
     });
 
   }
