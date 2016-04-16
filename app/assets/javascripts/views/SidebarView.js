@@ -5,8 +5,13 @@ app.SidebarView = Backbone.View.extend({
   el: '#sidebar',
 
   render: function() {
-    var sidebarViewTemplate = $('#sidebarViewTemplate').html();
-    this.$el.html(sidebarViewTemplate);
+    app.currentUser.fetch().done(function() {
+      var sidebarViewTemplate = $('#sidebarViewTemplate').html();
+      var sidebarViewHTML = _.template(sidebarViewTemplate);
+      $('#sidebar').html(sidebarViewHTML(app.currentUser.toJSON()));
+    });
+
+
   }
 
 });
