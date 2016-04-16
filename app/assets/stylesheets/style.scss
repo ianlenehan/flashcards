@@ -7,6 +7,26 @@ body {
   padding: 10px;
 }
 
+#sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 250px;
+  top: 0;
+  right: 0;
+  background-color: green;
+  z-index: -10;
+}
+
+#profilePicture {
+  width: 150px;
+  margin: 100px auto;
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+}
+
 #admin-links {
   display: none;
   z-index: 100000;
