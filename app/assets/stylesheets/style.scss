@@ -32,3 +32,23 @@ body {
   z-index: 100000;
   color: black;
 }
+
+#categories, #decks {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.category, .deck {
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+  flex-basis: 30%;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+h2 {
+  display: block;
+}

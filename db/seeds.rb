@@ -2,7 +2,7 @@
 #### ------------- DESTROY EVERYTHING ------------- ####
 
 # Keep in this order
-
+Card.destroy_all
 Deck.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -31,9 +31,9 @@ us_civil_war = Category.create(name: 'US Civil War')
 
 # SPANISH
 
-spanish_101 = Deck.create(name: 'Spanish 101', category_id: 7)
-spanish_food = Deck.create(name: 'Spanish - Food', category_id: 7)
-spanish_getting_around = Deck.create(name: 'Spanish - Getting Around', category_id: 1)
+spanish_101 = Deck.create(name: 'Spanish 101' )
+spanish_food = Deck.create(name: 'Spanish - Food')
+spanish_getting_around = Deck.create(name: 'Spanish - Getting Around')
 
 # FRENCH
 
@@ -61,6 +61,27 @@ ruby_classes = Deck.create(name: 'Ruby Classes')
 custers_last_stand = Deck.create(name: 'Custers Last Stand')
 general_grant = Deck.create(name: 'General Grant')
 general_lee = Deck.create(name: 'General Lee')
+
+
+#### ------------- CREATING CARDS ------------ ####
+
+
+# CARDS FOR SPANISH FOOD
+melon = Card.create(question: 'What is the spanish word for "melon"?', answer: 'melon')
+strawberry = Card.create(question: 'What is the spanish word for "strawberry"?', answer: 'fresa')
+pear = Card.create(question: 'What is the spanish word for "pear"?', answer: 'pera')
+banana = Card.create(question: 'What is the spanish word for "banana"?', answer: 'banano')
+apple = Card.create(question: 'What is the spanish word for "apple"?', answer: 'manzana')
+mango = Card.create(question: 'What is the spanish word for "mango"?', answer: 'mango')
+lemon = Card.create(question: 'What is the spanish word for "lemon"?', answer: 'limon')
+grapes = Card.create(question: 'What is the spanish word for "grapes"?', answer: 'uvas')
+
+#### ------------- ASSIGNING SPANISH FOOD CARDS TO SPANISH_FOOD DECK ------------ ####
+
+spanish_food.cards << melon << strawberry << pear << banana << apple << mango << lemon << grapes
+
+#### ------------- ASSIGNING CARDS TO USERS ------------ ####
+emily.cards << melon << strawberry << pear << banana << apple << mango << lemon << grapes
 
 
 #### ------------- ASSIGNING DECKS TO CATEGORIES ------------ ####
