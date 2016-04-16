@@ -9,6 +9,9 @@ app.AppView = Backbone.View.extend({
 
     var categoryView = new app.CategoryView();
     categoryView.render();
+
+    var sidebarView = new app.SidebarView();
+    sidebarView.render();
   }
 
 });
