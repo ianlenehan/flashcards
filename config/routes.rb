@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get '/users/current_user' => 'users#current_user'
-
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

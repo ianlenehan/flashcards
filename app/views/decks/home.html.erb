@@ -3,7 +3,6 @@ TEST
 </div>
 
 <script id="appViewTemplate" type="text/template">
-
   <div id="sidebar">
     <!-- Sidebar goes here -->
   </div>
@@ -11,18 +10,43 @@ TEST
   <div id="primaryContent">
      <div id="categoryList"></div>
      <div id="deckList"></div>
-
+     <div id="cards">
+       <!-- card template is rendered here -->
+     </div>
   </div>
-
-
 </script>
+
+
 
 <script id="categoryView" type="text/template">
     <div id="categories"></div>
 </script>
 
-<!---       SIDEBAR       -->
+<!--        CARD TEMPLATE        -->
+<script id="cardTemplate" type="text/template">
 
+  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+		<div class="flipper">
+			<div class="front">
+				<!-- front content -->
+				<p class="c-title">Q:</p>
+				<p class="question"> <%%= question %> </p>
+			</div>
+			<div class="back">
+				<!-- back content -->
+				<p class="c-title">A:</p>
+				<p cpass="answer"> <%%= answer %></p>
+			</div>
+		</div>
+	</div>
+
+
+</script>
+
+
+
+
+<!---       SIDEBAR TEMPLATE       -->
 <script id="sidebarViewTemplate" type="text/template">
 
   <div id="profilePicture">

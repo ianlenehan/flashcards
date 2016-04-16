@@ -4,29 +4,29 @@ app.AppRouter = Backbone.Router.extend({
   routes: {
     '' : 'index',
     'category/:id': 'showDecks',
-    'category/:id/:deckId': 'show Deck'
+    'category/:id/:deckId': 'showDeck'
   },
 
-  showDeck: function(deckId) {
+  showDeck: function(id, deckId) {
     var appView = new app.AppView();
     appView.render();
     app.deck_id = parseInt(deckId);
 
-    var deck = new app.Deck({id:deckId});
-    deck.fetch().done(function(){
-      app.cards = new app.Cards();
-      app.cards.fetch().done(function(){
-        var matchingCards = app.cards.where({
-          
+    app.cards = new app.Cards({deck_id:app.deck_id});
 
-
-        });
-
+    app.cards.fetch().done(function(){
+      var deckView = new app.DeckView({
+        collection: app.cards
       });
+      deckView.render();
+      // app.cards = new app.Cards();
+      // app.cards.fetch().done(function(){
+      //   var matchingCards = app.cards.where({
+      //   });
+      // });
 
 
     });
-
 
   },
   showDecks: function(id) {
