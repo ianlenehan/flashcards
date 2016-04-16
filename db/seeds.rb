@@ -1,7 +1,14 @@
 
+#### ------------- DESTROY EVERYTHING ------------- ####
+
+# Keep in this order
+
+Deck.destroy_all
+Category.destroy_all
+User.destroy_all
+
 #### ------------- CREATING USERS ------------ ####
 
-User.destroy_all
 
 emily = User.create(name_first: 'Emily', name_last: 'Quill', email: 'emily@example.com', password: 'chicken', password_confirmation: 'chicken', lifetime_score: 0, admin: false, photo: 'http://www.fillmurray.com/150/150')
 ian = User.create(name_first: 'Ian', name_last: 'Lenehan', email: 'ian@example.com', password: 'chicken', password_confirmation: 'chicken', lifetime_score: 0, admin: false, photo: 'http://www.fillmurray.com/150/150')
@@ -12,19 +19,15 @@ jackAdmin = User.create(name_first: 'Jack', name_last: 'Jeffress', email: 'admin
 
 #### ------------- CREATING CATEGORIES ------------ ####
 
-Category.destroy_all
-
-spanish = Deck.create(name: 'Spanish')
+spanish = Category.create(name: 'Spanish')
 french = Category.create(name: 'French')
 javascript = Category.create(name: 'JavaScript')
 ruby = Category.create(name: 'Ruby')
 biology = Category.create(name: 'Biology')
 us_civil_war = Category.create(name: 'US Civil War')
 
-
 #### ------------- CREATING DECKS ------------ ####
 
-Deck.destroy_all
 
 # SPANISH
 
@@ -75,3 +78,8 @@ us_civil_war.decks << custers_last_stand << general_grant << general_lee
 emily.decks << spanish_101 << spanish_food << spanish_getting_around
 emily.decks << french_101 << french_travel << french_dating
 emily.decks << evolution << genetics
+
+ian.decks << custers_last_stand << general_grant << general_lee
+ian.decks << ruby_loops << ruby_classes
+
+harrison.decks << js_variables << js_conditionals
