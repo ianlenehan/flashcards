@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore.js
+//= require backbone.js
+//= require moment.js
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .
