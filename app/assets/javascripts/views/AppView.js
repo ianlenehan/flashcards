@@ -5,10 +5,11 @@ app.AppView = Backbone.View.extend({
 
   render: function () {
     var appViewTemplate = $('#appViewTemplate').html();
+    console.log(appViewTemplate);
     this.$el.html(appViewTemplate);
 
-    var categoryView = new app.CategoryView();
-    categoryView.render();
+    // var categoryView = new app.CategoryView();
+    // categoryView.render();
   }
 
 });
