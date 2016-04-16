@@ -8,8 +8,8 @@ app.AppView = Backbone.View.extend({
     console.log(appViewTemplate);
     this.$el.html(appViewTemplate);
 
-    var categoryView = new app.CategoryView();
-    categoryView.render();
+    // var categoryView = new app.CategoryView();
+    // categoryView.render();
 
     var sidebarView = new app.SidebarView();
     sidebarView.render();
