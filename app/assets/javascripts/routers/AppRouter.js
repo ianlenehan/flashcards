@@ -3,9 +3,32 @@ var app = app || {};
 app.AppRouter = Backbone.Router.extend({
   routes: {
     '' : 'index',
-    'category/:id': 'showDecks'
+    'category/:id': 'showDecks',
+    'category/:id/:deckId': 'show Deck'
   },
 
+  showDeck: function(deckId) {
+    var appView = new app.AppView();
+    appView.render();
+    app.deck_id = parseInt(deckId);
+
+    var deck = new app.Deck({id:deckId});
+    deck.fetch().done(function(){
+      app.cards = new app.Cards();
+      app.cards.fetch().done(function(){
+        var matchingCards = app.cards.where({
+          
+
+
+        });
+
+      });
+
+
+    });
+
+
+  },
   showDecks: function(id) {
     var appView = new app.AppView();
     appView.render();
