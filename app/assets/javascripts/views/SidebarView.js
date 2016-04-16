@@ -6,7 +6,7 @@ app.SidebarView = Backbone.View.extend({
 
   render: function() {
     var sidebarViewTemplate = $('#sidebarViewTemplate').html();
-    
+    this.$el.html(sidebarViewTemplate);
   }
 
 });
