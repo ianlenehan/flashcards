@@ -4,6 +4,11 @@ app.AppRouter = Backbone.Router.extend({
   routes: {
     '' : 'index'
   },
-  index:function(){
-  }
+
+  index: function() {
+    var appView = new app.appView();
+    appView.render();
+  },
+
+
 });

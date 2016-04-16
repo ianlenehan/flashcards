@@ -4,10 +4,11 @@ app.AppView = Backbone.View.extend({
   el: '#main',
 
   render: function () {
-    var deckView = new app.deckView();
-    $('#main').html('');
+    var appViewTemplate = $('#appViewTemplate').html();
+    this.$el.html(appViewTemplate);
 
-    deckView.render();
+    var categoryView = new app.CategoryView();
+    categoryView.render();
   }
 
 });
