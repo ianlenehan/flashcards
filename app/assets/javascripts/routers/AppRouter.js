@@ -11,19 +11,21 @@ app.AppRouter = Backbone.Router.extend({
     var appView = new app.AppView();
     appView.render();
     app.deck_id = parseInt(deckId);
+    app.deck = new app.Deck({id:app.deck_id});
+    app.deck.fetch().done( function(){
 
-    app.cards = new app.Cards({deck_id:app.deck_id});
+      app.cards = new app.Cards({deck_id:app.deck_id});
 
-    app.cards.fetch().done(function(){
-      var deckView = new app.DeckView({
-        collection: app.cards
-      });
-      deckView.render();
-      // app.cards = new app.Cards();
-      // app.cards.fetch().done(function(){
-      //   var matchingCards = app.cards.where({
-      //   });
-      // });
+      app.cards.fetch().done(function(){
+        var deckView = new app.DeckView({
+          collection: app.cards,
+          model: app.deck
+        });
+        deckView.render();
+        
+    });
+
+
 
 
     });
