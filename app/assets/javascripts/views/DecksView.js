@@ -2,6 +2,7 @@ var app = app || {};
 
 app.DecksView = Backbone.View.extend({
   el: '#deckList',
+
   events: {
     'click .deck': 'showDeck'
   },
@@ -9,9 +10,8 @@ app.DecksView = Backbone.View.extend({
   showDeck: function(e) {
     var deckId = (e.currentTarget.dataset.deckid);
     app.router.navigate('/category/'+app.categoryId +'/'+ deckId, true);
-
-
   },
+  
   render: function() {
     $('#categoryList').remove();
     app.categoryName = this.model.attributes.name;

@@ -4,7 +4,8 @@ app.AppRouter = Backbone.Router.extend({
   routes: {
     '' : 'index',
     'category/:id': 'showDecks',
-    'category/:id/:deckId': 'showDeck'
+    'category/:id/:deckId': 'showDeck',
+    'decks/:id/play': 'playDeck'
   },
 
   showDeck: function(id, deckId) {
@@ -14,7 +15,7 @@ app.AppRouter = Backbone.Router.extend({
     app.deck = new app.Deck({id:app.deck_id});
     app.deck.fetch().done( function(){
         var deckView = new app.DeckView({
-          model: app.deck
+          model: app.deck,
         });
         deckView.render();
     });
@@ -44,6 +45,58 @@ app.AppRouter = Backbone.Router.extend({
     });
 
 
+  },
+
+  playDeck: function(deckId) {
+
+    if (app.gameState) {
+      // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
+      // If gameState is for a different deck, redirect to it.
+      if (app.gameState.currentDeck === deckId ) {
+        // app.deck_id = parseInt(deckId);
+        // app.deck = new app.Deck({id:app.deck_id});
+        // app.deck.fetch().done( function(){
+        //     var deckView = new app.DeckView({
+        //       model: app.deck,
+        //     });
+        //     deckView.render();
+        // });
+        if (app.deck && app.deck.get('id') === deckId) {
+          console.log("branch 1 ran");
+          var playDeckView = new app.PlayDeckView( { model: app.deck } );
+          playDeckView.render();
+        } else {
+          console.log("branch 2 ran");
+          app.deck = new app.Deck({ id: parseInt(deckId) });
+          app.deck.fetch().done(function() {
+            var playDeckView = new app.PlayDeckView( { model: app.deck } );
+            playDeckView.render();
+          });
+        }
+      } else {
+        console.log("branch 3 ran");
+        app.router.navigate('/decks/'+ deckId + '/play', true);
+      }
+    } else {
+      console.log("Branch 4 ran");
+      // If no game state, create a new game state object and save it to localStorage
+      // then render playDeckView.
+      var newGameState = {
+          gameInProgress: true,
+          currentDeck: deckId,
+          currentCard: 0,
+          gameHistory: []
+      };
+
+      app.gameState = newGameState;
+      app.basil.set("gameState", app.gameState);
+      app.deck = new app.Deck({ id: parseInt(deckId) });
+      app.deck.fetch().done(function() {
+        var playDeckView = new app.PlayDeckView( { model: app.deck } );
+        playDeckView.render();
+      });
+
+    }
   },
 
   index: function() {
