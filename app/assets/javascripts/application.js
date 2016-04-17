@@ -15,6 +15,8 @@
 //= require underscore.js
 //= require backbone.js
 //= require moment.js
+//= require basil.min.js
+//= require fast-levenshtein.min.js
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
