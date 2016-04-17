@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
+
+  <table>
+  <tr>
+    <th>
+      <strong>Decks in <%= @category.name %>: </strong>
+    </th>
+  </tr>
+<% @category.decks.each do |deck| %>
+<tr>
+  <td><%= deck.name %></td>
+</tr>
+<% end %>
+
+</table>
 </p>
+
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

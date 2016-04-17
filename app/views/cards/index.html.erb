@@ -18,7 +18,7 @@
       <tr>
         <td><%= card.question %></td>
         <td><%= card.answer %></td>
-        <td><%= card.user %></td>
+        <td><%= card.user.name_first %> <%= card.user.name_last %></td>
         <td><%= card.flags %></td>
         <td><%= link_to 'Show', card %></td>
         <td><%= link_to 'Edit', edit_card_path(card) %></td>
