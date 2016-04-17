@@ -22,7 +22,7 @@ app.AppRouter = Backbone.Router.extend({
           model: app.deck
         });
         deckView.render();
-        
+
     });
 
 
