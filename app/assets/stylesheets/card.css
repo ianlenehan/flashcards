@@ -74,5 +74,15 @@
 .c-title {
   font-size: 150%;
   color: gainsboro;
+}
 
+.add-icon {
+	width: 20px;
+	left: 90px;
+	position: relative;
+	opacity: 0.7;
+}
+
+.add-icon:hover {
+	opacity: 1;
 }

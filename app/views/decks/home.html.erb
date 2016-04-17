@@ -13,6 +13,9 @@ TEST
      <div id="cards">
        <!-- card template is rendered here -->
      </div>
+     <div id="profilePage">
+       <!-- user profile with decks -->
+     </div>
   </div>
 </script>
 
@@ -37,6 +40,7 @@ TEST
 			<div class="back">
 				<!-- back content -->
         <div class="card-contents">
+          <img class="add-icon" src="../assets/add.png" alt="add to deck">
   				<p class="c-title">A:</p>
   				<p cpass="answer"> <%%= answer %></p>
         </div>
@@ -60,6 +64,19 @@ TEST
   </div>
 
   <div id="recentlyPlayed">
+  </div>
+
+</script>
+
+<!-- PROFILE PAGE TEMPLATE -->
+<script id="profileViewTemplate" type="text/template">
+
+  <div id="profileDetails">
+    <img src="<%%= photo  %>">
+    <p>Name: <%%= name_first %> <%%= name_last %></p>
+  </div>
+
+  <div id="myDecks">
   </div>
 
 </script>
