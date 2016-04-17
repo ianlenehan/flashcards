@@ -5,7 +5,8 @@ app.AppRouter = Backbone.Router.extend({
     '' : 'index',
     'category/:id': 'showDecks',
     'category/:id/:deckId': 'showDeck',
-    'decks/:id/play': 'playDeck'
+    'decks/:id/play': 'playDeck',
+    'user/:id' : 'myDecks'
   },
 
   showDeck: function(id, deckId) {
@@ -21,6 +22,7 @@ app.AppRouter = Backbone.Router.extend({
     });
 
   },
+
   showDecks: function(id) {
     var appView = new app.AppView();
     appView.render();
@@ -41,10 +43,26 @@ app.AppRouter = Backbone.Router.extend({
         });
         decksView.render();
       });
-
     });
+  },
 
+  myDecks: function() {
+    var appView = new app.AppView();
+    appView.render();
+    var profileView = new app.ProfileView();
+    profileView.render();
+    app.decks = new app.Decks();
+    app.decks.fetch().done( function () {
+      app.user_id = parseInt($('#user-id').text());
 
+      app.myDecks = app.decks.where({
+        user_id: app.user_id
+      });
+      app.decksView = new app.DecksView({
+        collection: app.myDecks,
+      });
+      app.decksView.myDecksRender();
+    });
   },
 
   playDeck: function(deckId) {

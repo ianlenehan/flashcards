@@ -5,6 +5,14 @@ body {
 .nav-bar {
   background: gainsboro;
   padding: 10px;
+  z-index: 1000000;
+  ul {
+    list-style: none;
+    li {
+      padding: 0 5px 0 5px;
+      display: inline-block;
+    }
+  }
 }
 
 #sidebar {
@@ -14,7 +22,7 @@ body {
   top: 0;
   right: 0;
   background-color: green;
-  z-index: -10;
+  z-index: 10;
 }
 
 .popUp {
@@ -31,6 +39,7 @@ body {
 #profilePicture {
   width: 150px;
   margin: 100px auto;
+  z-index: 100000;
   img {
     width: 150px;
     height: 150px;
@@ -42,6 +51,13 @@ body {
   display: none;
   z-index: 100000;
   color: black;
+  background-color: gainsboro;
+}
+
+#nav-drop {
+  list-style: none;
+  position: fixed;
+  z-index: 10;
 }
 
 #categories, #decks {
@@ -62,4 +78,8 @@ body {
 
 h2 {
   display: block;
+}
+
+#user-id {
+  display: none;
 }
