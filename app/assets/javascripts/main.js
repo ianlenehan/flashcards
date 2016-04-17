@@ -10,7 +10,7 @@ $(document).ready(function() {
     $('#admin-links').fadeIn();
   });
 
-  $('#admin-button').on('mouseout', function () {
+  $('#admin-links').on('click', function () {
     $('#admin-links').fadeOut();
   });
 });

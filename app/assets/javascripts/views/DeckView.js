@@ -2,8 +2,10 @@ var app = app || {};
 
 app.DeckView = Backbone.View.extend({
   el: '#cards',
+
   events: {
-    'click #play' : 'playDeck'
+    'click #play' : 'playDeck',
+    'click #fav' : 'favouriteDeck'
   },
 
   playDeck: function() {
@@ -45,11 +47,16 @@ app.DeckView = Backbone.View.extend({
 
   },
 
+    favouriteDeck: function() {
+      console.log("favourited");
+    },
+
   render: function() {
     $('#deckList').remove();
-    $('#cards').append('<h2>'+this.model.attributes.name+'</h2>');
-    $('#cards').append('<button id="play">Play this deck!</button><br>');
-// debugger;
+    this.$el.append('<h2>'+this.model.attributes.name+'</h2>');
+    this.$el.append('<button id="play">Play this deck!</button><br>');
+    this.$el.append('<button id="fav">Favourite this deck!</button><br>');
+
 
     _.each(this.model.attributes.cards, function (card) {
       var cardObject = card;

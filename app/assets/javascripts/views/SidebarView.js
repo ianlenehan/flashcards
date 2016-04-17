@@ -4,6 +4,15 @@ app.SidebarView = Backbone.View.extend({
 
   el: '#sidebar',
 
+  events: {
+    'click #profilePicture' : 'profileView'
+  },
+
+  profileView: function () {
+    app.current_user = $('#user-id').html();
+    app.router.navigate('/user/' + app.current_user, true);
+  },
+
   render: function() {
     app.currentUser.fetch().done(function() {
       var sidebarViewTemplate = $('#sidebarViewTemplate').html();
@@ -13,5 +22,7 @@ app.SidebarView = Backbone.View.extend({
 
 
   }
+
+
 
 });
