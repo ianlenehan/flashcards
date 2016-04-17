@@ -1,14 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Deck Name:</strong>
   <%= @deck.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @deck.user %>
+  <strong>Deck Owner:</strong>
+  <%= @deck.user.name_first %>
+  <%= @deck.user.name_last %>
 </p>
+
+
+
+  <strong>Cards:</strong>
+  <p>
+  <% @deck.cards.each do |card| %>
+<table>
+  <tr>
+    <th>
+      <strong>Question:</strong>
+    </th>
+    <td><%= card.question %></td>
+  </tr>
+  <tr>
+    <th>
+      <strong>Answer:</strong>
+    </th>
+    <td><%= card.answer %></td>
+  </tr>
+</table>
+
+<% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>

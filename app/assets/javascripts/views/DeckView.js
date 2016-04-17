@@ -2,11 +2,20 @@ var app = app || {};
 
 app.DeckView = Backbone.View.extend({
   el: '#deck',
+  events: {
+    'click #play' : 'playDeck'
+  },
 
+    playDeck: function() {
+      console.log("play deck caled");
+      app.router.navigate(deckId, true);
+
+    },
   render: function() {
-    // debugger;
     $('#deckList').remove();
     $('#cards').append('<h2>'+this.model.attributes.name+'</h2>');
+    $('#cards').append('<button id="play">Play this deck!</button><br>');
+// debugger;
 
     _.each(this.model.attributes.cards, function (card) {
       var cardObject = card;
@@ -16,6 +25,7 @@ app.DeckView = Backbone.View.extend({
     });
 
   }
+
 
 
 });
