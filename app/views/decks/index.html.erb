@@ -1,13 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Decks</h1>
+<h1>All Decks</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Cards</th>
+
+      <th>Owner</th>
+
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -15,7 +18,8 @@
     <% @decks.each do |deck| %>
       <tr>
         <td><%= deck.name %></td>
-        <td><%= deck.user %></td>
+        <td><%= deck.cards.length %></td>
+        <td><%= deck.user.name_first %> <%= deck.user.name_last %></td>
         <td><%= link_to 'Show', deck %></td>
         <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
         <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
