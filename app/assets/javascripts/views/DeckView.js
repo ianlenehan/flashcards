@@ -14,7 +14,7 @@ app.DeckView = Backbone.View.extend({
     },
 
     favouriteDeck: function() {
-      console.log("fav");
+      console.log("favourited");
     },
 
   render: function() {
