@@ -2,23 +2,25 @@ var app = app || {};
 
 app.AppRouter = Backbone.Router.extend({
   routes: {
-    '' : 'index',
+    '': 'index',
     'category/:id': 'showDecks',
     'category/:id/:deckId': 'showDeck',
     'decks/:id/play': 'playDeck',
-    'user/:id' : 'myDecks'
+    'user/:id/:filter': 'myDecks'
   },
 
   showDeck: function(id, deckId) {
     var appView = new app.AppView();
     appView.render();
     app.deck_id = parseInt(deckId);
-    app.deck = new app.Deck({id:app.deck_id});
-    app.deck.fetch().done( function(){
-        var deckView = new app.DeckView({
-          model: app.deck,
-        });
-        deckView.render();
+    app.deck = new app.Deck({
+      id: app.deck_id
+    });
+    app.deck.fetch().done(function() {
+      var deckView = new app.DeckView({
+        model: app.deck,
+      });
+      deckView.render();
     });
 
   },
@@ -26,35 +28,43 @@ app.AppRouter = Backbone.Router.extend({
   showDecks: function(id) {
     var appView = new app.AppView();
     appView.render();
-    app.cat_id = parseInt( id );
+    app.cat_id = parseInt(id);
 
-    var category = new app.Category({id:id});
+    var category = new app.Category({
+      id: id
+    });
     category.fetch().done(function() {
 
       app.decks = new app.Decks();
-      app.decks.fetch().done(function(){
+      app.decks.fetch().done(function() {
 
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
         var decksView = new app.DecksView({
-            collection: matchingDecks,
-            model: category
+          collection: matchingDecks,
+          model: category
         });
         decksView.render();
       });
     });
   },
 
-  myDecks: function() {
+  myDecks: function(id, filter) {
+    if (filter === "mydecks") {
+      console.log('my decks');
+    } else {
+      app.favourites = new app.Favourites();
+      app.favourites.fetch().done( function () {
+        app.myFaves = app.favourites.where({
+          user_id: app.currentUser.id
+        });
+      });
+    }
     var appView = new app.AppView();
     appView.render();
-    var profileView = new app.ProfileView();
-    profileView.render();
     app.decks = new app.Decks();
-    app.currentUser = new app.CurrentUser();
-    app.decks.fetch().done( function () {
-      app.currentUser.fetch().done( function () {
+    app.decks.fetch().done(function() {
       app.myDecks = app.decks.where({
         user_id: app.currentUser.id
       });
@@ -63,7 +73,6 @@ app.AppRouter = Backbone.Router.extend({
       });
       app.decksView.myDecksRender();
     });
-    });
   },
 
   playDeck: function(deckId) {
@@ -71,7 +80,7 @@ app.AppRouter = Backbone.Router.extend({
     if (app.gameState) {
       // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
       // If gameState is for a different deck, redirect to it.
-      if (app.gameState.currentDeck === deckId ) {
+      if (app.gameState.currentDeck === deckId) {
         // app.deck_id = parseInt(deckId);
         // app.deck = new app.Deck({id:app.deck_id});
         // app.deck.fetch().done( function(){
@@ -82,36 +91,46 @@ app.AppRouter = Backbone.Router.extend({
         // });
         if (app.deck && app.deck.get('id') === deckId) {
           console.log("branch 1 ran");
-          var playDeckView = new app.PlayDeckView( { model: app.deck } );
+          var playDeckView = new app.PlayDeckView({
+            model: app.deck
+          });
           playDeckView.render();
         } else {
           console.log("branch 2 ran");
-          app.deck = new app.Deck({ id: parseInt(deckId) });
+          app.deck = new app.Deck({
+            id: parseInt(deckId)
+          });
           app.deck.fetch().done(function() {
-            var playDeckView = new app.PlayDeckView( { model: app.deck } );
+            var playDeckView = new app.PlayDeckView({
+              model: app.deck
+            });
             playDeckView.render();
           });
         }
       } else {
         console.log("branch 3 ran");
-        app.router.navigate('/decks/'+ deckId + '/play', true);
+        app.router.navigate('/decks/' + deckId + '/play', true);
       }
     } else {
       console.log("Branch 4 ran");
       // If no game state, create a new game state object and save it to localStorage
       // then render playDeckView.
       var newGameState = {
-          gameInProgress: true,
-          currentDeck: deckId,
-          currentCard: 0,
-          gameHistory: []
+        gameInProgress: true,
+        currentDeck: deckId,
+        currentCard: 0,
+        gameHistory: []
       };
 
       app.gameState = newGameState;
       app.basil.set("gameState", app.gameState);
-      app.deck = new app.Deck({ id: parseInt(deckId) });
+      app.deck = new app.Deck({
+        id: parseInt(deckId)
+      });
       app.deck.fetch().done(function() {
-        var playDeckView = new app.PlayDeckView( { model: app.deck } );
+        var playDeckView = new app.PlayDeckView({
+          model: app.deck
+        });
         playDeckView.render();
       });
 
@@ -122,8 +141,10 @@ app.AppRouter = Backbone.Router.extend({
     var appView = new app.AppView();
     appView.render();
     app.categories = new app.Categories();
-    app.categories.fetch().done( function () {
-      var categoryView = new app.CategoryView( { collection : app.categories });
+    app.categories.fetch().done(function() {
+      var categoryView = new app.CategoryView({
+        collection: app.categories
+      });
       categoryView.render();
     });
   }
