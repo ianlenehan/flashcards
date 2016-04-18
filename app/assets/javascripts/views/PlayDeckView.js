@@ -9,20 +9,11 @@ app.PlayDeckView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("Play deck view render called");
-    x = this.model.attributes;
-    this.$el.html( JSON.stringify(x));
-
-    //app.gameState = {
-    // gameInProgress: *boolean*,
-    // currentDeck: *integer*,
-    // currentCard: *integer*,
-    // gameHistory: [
-    //                 {card_id: *integer*,
-    //                  answeredCorrectly: *boolean*
-    //                 }...
-    //               ]
-    // }
+     this.$el.empty();
+     $playCard = $('<div>').attr('id', 'playCard');
+     this.$el.append($playCard);
+     app.playCardView = new app.PlayCardView();
+     app.playCardView.render();
   },
 
 });
