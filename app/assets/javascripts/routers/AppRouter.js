@@ -11,24 +11,26 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   finishGame: function() {
+    console.log("Finish game called");
 
     var gameState = app.basil.get("gameState");
     var rawScore = this.calculateRawScore(gameState);
     var percentScore = this.calculatePercentScore(gameState);
-    var deckId = gameState.deckId;
-    app.gameState = undefined;
+    var deckId = gameState.currentDeckId;
     app.basil.remove("gameState");
     var score = new app.Score();
     app.currentUser.fetch().done(function() {
-      score.set({
-        user_id: app.currentUser.toJSON().id,
-        deck_id: deckId,
-        raw_score: rawScore,
-        percent_score: percentScore
+      score.set({ score: {
+          user_id: app.currentUser.toJSON().id,
+          deck_id: deckId,
+          score: rawScore,
+          percent_score: percentScore
+        }
       });
       score.save();
 
     });
+    app.gameState = undefined;
 
 
   },
@@ -44,7 +46,7 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   calculatePercentScore: function(gameState) {
-    var rawScore = calculateRawScore(gameState);
+    var rawScore = this.calculateRawScore(gameState);
     var maxPossibleScore = gameState.gameDetails.length;
     var percentScore = rawScore / maxPossibleScore * 100;
     return percentScore;
