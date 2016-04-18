@@ -52,16 +52,17 @@ app.AppRouter = Backbone.Router.extend({
     var profileView = new app.ProfileView();
     profileView.render();
     app.decks = new app.Decks();
+    app.currentUser = new app.CurrentUser();
     app.decks.fetch().done( function () {
-      app.user_id = parseInt($('#user-id').text());
-
+      app.currentUser.fetch().done( function () {
       app.myDecks = app.decks.where({
-        user_id: app.user_id
+        user_id: app.currentUser.id
       });
       app.decksView = new app.DecksView({
         collection: app.myDecks,
       });
       app.decksView.myDecksRender();
+    });
     });
   },
 
