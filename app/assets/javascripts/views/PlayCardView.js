@@ -23,12 +23,14 @@ app.PlayCardView = Backbone.View.extend({
     var playCardTemplate = $('#playCardTemplate').html();
     var playCardHTML = _.template(playCardTemplate);
     this.$el.html( playCardHTML(cardToPlay) );
+    this.$el.addClass('animated rollIn');
+
 
   },
 
   checkAnswer: function() {
-    console.log("checkAnswer called");
-
+    $('#submit-answer').hide();
+    $('#input-answer').hide();
     $('.play-flipper').addClass('toggle-flip');
 
     var gameState = app.basil.get("gameState");
@@ -49,9 +51,6 @@ app.PlayCardView = Backbone.View.extend({
       // Incorrect
       currentCard.correct = false;
     }
-
-
-
      if (gameState.currentCardIndex === gameState.gameDetails.length - 1) {
        this.$el.append('<button id="finish-game">Finish Game</button>');
        app.basil.set("gameState", gameState);
@@ -65,7 +64,14 @@ app.PlayCardView = Backbone.View.extend({
   },
 
   getNextCard: function() {
-    app.playCardView.render();
+    this.$el.removeClass('animated rollIn');
+    this.$el.addClass('animated zoomOutRight');
+
+    setTimeout(function(){
+      $('#playCard').removeClass('animated zoomOutRight');
+      app.playCardView.render();
+    }, 1000);
+
   },
 
   finishGame: function() {

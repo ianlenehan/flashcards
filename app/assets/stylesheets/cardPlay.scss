@@ -1,5 +1,11 @@
 
 /* entire container, keeps perspective */
+
+#playCard {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
 .play-flip-container {
 	margin: 20px;
 
@@ -7,7 +13,7 @@
 }
 	/* flip the pane when hovered */
 
-  // 
+  //
   .toggle-flip {
   	transform: rotateY(180deg);
   }
