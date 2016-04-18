@@ -93,6 +93,7 @@ app.AppRouter = Backbone.Router.extend({
     app.decks = new app.Decks();
     var appView = new app.AppView();
     appView.render();
+
     if (filter === "mydecks") {
       app.decks.fetch().done(function() {
         app.myDecks = app.decks.where({
@@ -132,7 +133,8 @@ app.AppRouter = Backbone.Router.extend({
     if (app.gameState) {
       // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
       // If gameState is for a different deck, redirect to it.
-      if (app.gameState.currentDeck === deckId) {
+
+      if (app.gameState.currentDeckId === deckId ) {
         if (app.deck && app.deck.get('id') === deckId) {
           var playDeckView = new app.PlayDeckView({
             model: app.deck

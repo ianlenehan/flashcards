@@ -11,12 +11,14 @@ app.DeckView = Backbone.View.extend({
   playDeck: function() {
       // Pull any existing gameState value from localStorage via Basil
       app.gameState = app.basil.get('gameState');
+
       // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
       if (app.gameState && app.gameState.gameInProgress === true) {
 
-      var existingGameDeck = app.gameState.currentDeck;
-      var requestedGameDeck = app.deck.get("id");
-      this.existingGamePrompt(existingGameDeck, requestedGameDeck);
+        var existingGameDeck = app.gameState.currentDeckId;
+        var requestedGameDeck = app.deck.get("id");
+        this.existingGamePrompt(existingGameDeck, requestedGameDeck);
+
 
     } else {
 
@@ -35,15 +37,15 @@ app.DeckView = Backbone.View.extend({
 
     // Click handlers to handle both options
     $('#toExistingGame').on('click', function() {
-        $popUp.remove();
-        app.router.navigate('/decks/'+ existingGameDeck + '/play', true);
+      $popUp.remove();
+      app.router.navigate('/decks/' + existingGameDeck + '/play', true);
     });
 
     $('#toNewGame').on('click', function() {
-        $popUp.remove();
-        app.basil.remove('gameState');
-        app.gameState = null;
-        app.router.navigate('/decks/'+ requestedGameDeck + '/play', true);
+      $popUp.remove();
+      app.basil.remove('gameState');
+      app.gameState = null;
+      app.router.navigate('/decks/' + requestedGameDeck + '/play', true);
     });
 
   },
@@ -59,20 +61,47 @@ app.DeckView = Backbone.View.extend({
   favouriteDeck: function(e) {
     e.preventDefault();
     var favourite = new app.Favourite();
-    favourite.set({
-      user_id: app.currentUser.id,
-      deck_id: app.deck.id
+    app.favourites = new app.Favourites();
+    app.favourites.fetch().done(function() {
+      var filtered = app.favourites.filter(function(fave) {
+        return fave.get('user_id') === app.currentUser.id && fave.get('deck_id') === app.deck.id;
+      });
+      if (!filtered.length) {
+        favourite.set({
+          user_id: app.currentUser.id,
+          deck_id: app.deck.id
+        });
+        favourite.save();
+        $('#fav').attr('src', '/assets/favStar.png');
+      } else {
+        $('#fav').attr('src', '/assets/favStarOff.png');
+
+          filtered[0].destroy();
+
+      }
     });
-    favourite.save();
-    console.log("favourited", app.deck.id, app.currentUser.id);
-    debugger;
+
   },
 
   render: function() {
     $('#deckList').remove();
     this.$el.append('<h2>' + this.model.attributes.name + '</h2>');
     this.$el.append('<button id="play">Play this deck!</button><br>');
-    this.$el.append('<button id="fav">Favourite this deck!</button><br>');
+    app.favourites = new app.Favourites();
+    var that = this;
+    app.favourites.fetch().done(function() {
+       app.favourite = app.favourites.filter(function(fave) {
+        return fave.get('user_id') === app.currentUser.id && fave.get('deck_id') === that.model.id;
+      });
+      if (app.favourite.length) {
+        console.log('there is a fav');
+        that.$el.prepend('<img id="fav" src="assets/favStar.png">');
+      } else {
+        console.log('no fav');
+        that.$el.prepend('<img id="fav" src="assets/favStarOff.png">');
+      }
+    });
+
 
 
     _.each(this.model.attributes.cards, function(card) {
@@ -81,9 +110,5 @@ app.DeckView = Backbone.View.extend({
       var cardHTML = _.template(cardTemplate);
       $('#cards').append(cardHTML(cardObject));
     });
-
   }
-
-
-
 });

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/home' => 'decks#home'
-
+  delete '/favourites/:id' => 'favourites#destroy'
 
   resources :scores
   resources :tags
