@@ -2,8 +2,14 @@ body {
   margin: 0;
 }
 
+#profile {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
 img.profile {
   width: 200px;
+  border-radius: 50%
 }
 nav {
   z-index: 9999999999;
