@@ -5,12 +5,24 @@ app.SidebarView = Backbone.View.extend({
   el: '#sidebar',
 
   events: {
-    'click #profilePicture' : 'profileView'
+    'click #mydecksfilter' : 'myDecksView',
+    'click #myfavsfilter' : 'myFavsView'
   },
 
-  profileView: function () {
-    app.current_user = $('#user-id').html();
-    app.router.navigate('/user/' + app.current_user, true);
+  myDecksView: function () {
+    app.currentUser = new app.CurrentUser();
+    app.currentUser.fetch().done( function () {
+      console.log(app.currentUser.id);
+      app.router.navigate('/user/' + app.currentUser.id + '/mydecks', true);
+    });
+  },
+
+  myFavsView: function () {
+    app.currentUser = new app.CurrentUser();
+    app.currentUser.fetch().done( function () {
+      console.log(app.currentUser.id);
+      app.router.navigate('/user/' + app.currentUser.id + '/myfavs', true);
+    });
   },
 
   render: function() {
@@ -18,6 +30,8 @@ app.SidebarView = Backbone.View.extend({
       var sidebarViewTemplate = $('#sidebarViewTemplate').html();
       var sidebarViewHTML = _.template(sidebarViewTemplate);
       $('#sidebar').html(sidebarViewHTML(app.currentUser.toJSON()));
+      $('#sidebar').append('<button class="filterbutton" id="mydecksfilter">My Decks</button>');
+      $('#sidebar').append('<button class="filterbutton" id="myfavsfilter">Favourited Decks</button>');
     });
 
 
