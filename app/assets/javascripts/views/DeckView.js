@@ -4,8 +4,8 @@ app.DeckView = Backbone.View.extend({
   el: '#cards',
 
   events: {
-    'click #play' : 'playDeck',
-    'click #fav' : 'favouriteDeck'
+    'click #play': 'playDeck',
+    'click #fav': 'favouriteDeck'
   },
 
   playDeck: function() {
@@ -14,15 +14,15 @@ app.DeckView = Backbone.View.extend({
       // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
       if (app.gameState && app.gameState.gameInProgress === true) {
 
-        var existingGameDeck = app.gameState.currentDeck;
-        var requestedGameDeck = app.deck.get("id");
-        this.existingGamePrompt(existingGameDeck, requestedGameDeck);
+      var existingGameDeck = app.gameState.currentDeck;
+      var requestedGameDeck = app.deck.get("id");
+      this.existingGamePrompt(existingGameDeck, requestedGameDeck);
 
-      } else {
+    } else {
 
-        app.router.navigate('/decks/'+ app.deck.get("id") + '/play', true);
+      app.router.navigate('/decks/' + app.deck.get("id") + '/play', true);
 
-      }
+    }
   },
 
   // Creates pop up asking the user to confirm playing new deck if they have a game in progress
@@ -48,22 +48,38 @@ app.DeckView = Backbone.View.extend({
 
   },
 
-    favouriteDeck: function() {
-      console.log("favourited");
-    },
+  // newAttributes: function() {
+  //   return {
+  //     user_id: app.currentUser.id,
+  //     deck_id: app.deck.id,
+  //     completed: false
+  //   };
+  // },
+
+  favouriteDeck: function(e) {
+    e.preventDefault();
+    var favourite = new app.Favourite();
+    favourite.set({
+      user_id: app.currentUser.id,
+      deck_id: app.deck.id
+    });
+    favourite.save();
+    // favourites.create(this.newAttributes());
+    console.log("favourited", app.deck.id, app.currentUser.id);
+  },
 
   render: function() {
     $('#deckList').remove();
-    this.$el.append('<h2>'+this.model.attributes.name+'</h2>');
+    this.$el.append('<h2>' + this.model.attributes.name + '</h2>');
     this.$el.append('<button id="play">Play this deck!</button><br>');
     this.$el.append('<button id="fav">Favourite this deck!</button><br>');
 
 
-    _.each(this.model.attributes.cards, function (card) {
+    _.each(this.model.attributes.cards, function(card) {
       var cardObject = card;
       var cardTemplate = $('#cardTemplate').html();
-      var cardHTML = _.template( cardTemplate );
-      $('#cards').append( cardHTML( cardObject ) );
+      var cardHTML = _.template(cardTemplate);
+      $('#cards').append(cardHTML(cardObject));
     });
 
   }
