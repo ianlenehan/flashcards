@@ -57,8 +57,10 @@ app.AppRouter = Backbone.Router.extend({
       app.favourites = new app.Favourites();
       app.favourites.fetch().done( function () {
         app.myFaves = app.favourites.where({
-          user_id: app.currentUser.id
+          user_id = app.currentUser.id
         });
+        console.log('my fave');
+        debugger;
       });
     }
     var appView = new app.AppView();
