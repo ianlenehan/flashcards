@@ -46,10 +46,20 @@ app.PlayCardView = Backbone.View.extend({
     if (editDistance === 0) {
       // Correct
       currentCard.correct = true;
+      setTimeout(function(){
+        $('.correct').removeClass('hidden').addClass('animated fadeInDown');
+      }, 800);
+
+
+
 
     } else {
       // Incorrect
       currentCard.correct = false;
+      setTimeout(function(){
+        $('.incorrect').removeClass('hidden').addClass('animated fadeInDown');
+      }, 800);
+
     }
      if (gameState.currentCardIndex === gameState.gameDetails.length - 1) {
        this.$el.append('<button id="finish-game">Finish Game</button>');
@@ -70,7 +80,7 @@ app.PlayCardView = Backbone.View.extend({
     setTimeout(function(){
       $('#playCard').removeClass('animated zoomOutRight');
       app.playCardView.render();
-    }, 1000);
+    }, 500);
 
   },
 
