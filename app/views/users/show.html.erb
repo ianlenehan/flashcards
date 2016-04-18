@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Name first:</strong>
+<img src="<%= @user.photo  %>" />
+</p>
+<p>
   <%= @user.name_first %>
-</p>
-
-<p>
-  <strong>Name last:</strong>
   <%= @user.name_last %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+
 </p>
 
 <p>
-  <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
@@ -20,15 +20,4 @@
   <%= @user.lifetime_score %>
 </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @user.photo %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '<<', users_path %>
