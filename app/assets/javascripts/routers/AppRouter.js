@@ -101,8 +101,8 @@ app.AppRouter = Backbone.Router.extend({
 
         var newGameState = {
             gameInProgress: true,
-            currentDeck: deckId,
-            currentCard: 0,
+            currentDeckId: deckId,
+            currentCardIndex: 0,
             gameDetails: cards
         };
 
