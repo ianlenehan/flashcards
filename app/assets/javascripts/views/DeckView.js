@@ -36,10 +36,12 @@ app.DeckView = Backbone.View.extend({
 
     // Click handlers to handle both options
     $('#toExistingGame').on('click', function() {
+        $popUp.remove();
         app.router.navigate('/decks/'+ existingGameDeck + '/play', true);
     });
 
     $('#toNewGame').on('click', function() {
+        $popUp.remove();
         app.basil.remove('gameState');
         app.gameState = null;
         app.router.navigate('/decks/'+ requestedGameDeck + '/play', true);
