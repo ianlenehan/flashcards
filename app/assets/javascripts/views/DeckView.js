@@ -9,14 +9,16 @@ app.DeckView = Backbone.View.extend({
   },
 
   playDeck: function() {
-    // Pull any existing gameState value from localStorage via Basil
-    app.gameState = app.basil.get('gameState');
-    // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
-    if (app.gameState && app.gameState.gameInProgress === true) {
+      // Pull any existing gameState value from localStorage via Basil
+      app.gameState = app.basil.get('gameState');
 
-      var existingGameDeck = app.gameState.currentDeck;
-      var requestedGameDeck = app.deck.get("id");
-      this.existingGamePrompt(existingGameDeck, requestedGameDeck);
+      // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
+      if (app.gameState && app.gameState.gameInProgress === true) {
+
+        var existingGameDeck = app.gameState.currentDeckId;
+        var requestedGameDeck = app.deck.get("id");
+        this.existingGamePrompt(existingGameDeck, requestedGameDeck);
+
 
     } else {
 
