@@ -6,6 +6,22 @@
 	margin: 0 auto;
 	text-align: center;
 }
+
+.hidden {
+	display: none;
+}
+
+.correct {
+	font-size: 200%;
+	color: green;
+}
+
+.incorrect {
+	font-size: 200%;
+	color: red;
+}
+
+
 .play-flip-container {
 	margin: 20px;
 
