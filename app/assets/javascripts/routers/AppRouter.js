@@ -11,8 +11,6 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   finishGame: function() {
-    console.log("Finish game called");
-
     var gameState = app.basil.get("gameState");
     var rawScore = this.calculateRawScore(gameState);
     var percentScore = this.calculatePercentScore(gameState);
@@ -31,7 +29,7 @@ app.AppRouter = Backbone.Router.extend({
     });
     app.gameState = undefined;
 
-
+    // TODO: Add score to lifetime_score for the user
   },
 
   calculateRawScore: function(gameState) {
@@ -64,7 +62,6 @@ app.AppRouter = Backbone.Router.extend({
       });
       deckView.render();
     });
-
   },
 
   showDecks: function(id) {
@@ -76,10 +73,8 @@ app.AppRouter = Backbone.Router.extend({
       id: id
     });
     category.fetch().done(function() {
-
       app.decks = new app.Decks();
       app.decks.fetch().done(function() {
-
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
@@ -91,7 +86,7 @@ app.AppRouter = Backbone.Router.extend({
       });
     });
   },
-  // 
+  //
   // myDecks: function(id, filter) {
   //   if (filter === "mydecks") {
   //     console.log('my decks');
@@ -120,19 +115,16 @@ app.AppRouter = Backbone.Router.extend({
   // },
 
   playDeck: function(deckId) {
-
     if (app.gameState) {
       // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
       // If gameState is for a different deck, redirect to it.
       if (app.gameState.currentDeck === deckId ) {
         if (app.deck && app.deck.get('id') === deckId) {
-          console.log("branch 1 ran");
           var playDeckView = new app.PlayDeckView({
             model: app.deck
           });
           playDeckView.render();
         } else {
-          console.log("branch 2 ran");
           app.deck = new app.Deck({
             id: parseInt(deckId)
           });
@@ -144,17 +136,13 @@ app.AppRouter = Backbone.Router.extend({
           });
         }
       } else {
-        console.log("branch 3 ran");
         app.router.navigate('/decks/' + deckId + '/play', true);
       }
     } else {
-      console.log("Branch 4 ran");
       // If no game state, create a new game state object and save it to localStorage
       // then render playDeckView.
       app.deck = new app.Deck({ id: parseInt(deckId) });
       app.deck.fetch().done(function() {
-
-        console.log(app.deck);
 
         var cards = app.deck.attributes.cards;
         cards = _.shuffle(cards);
@@ -168,11 +156,9 @@ app.AppRouter = Backbone.Router.extend({
 
         app.gameState = newGameState;
         app.basil.set("gameState", app.gameState);
-
         var playDeckView = new app.PlayDeckView( { model: app.deck } );
         playDeckView.render();
       });
-
     }
   },
 
