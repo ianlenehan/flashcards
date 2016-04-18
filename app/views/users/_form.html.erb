@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name_first %><br>
+    <%= f.label :First_name %><br>
     <%= f.text_field :name_first %>
   </div>
   <div class="field">
-    <%= f.label :name_last %><br>
+    <%= f.label :Last_name %><br>
     <%= f.text_field :name_last %>
   </div>
   <div class="field">
@@ -32,16 +32,8 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :lifetime_score %><br>
-    <%= f.number_field :lifetime_score %>
-  </div>
-  <div class="field">
     <%= f.label :photo %><br>
     <%= f.text_area :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
   </div>
   <div class="actions">
     <%= f.submit %>
