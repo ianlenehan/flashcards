@@ -11,7 +11,7 @@ app.DeckView = Backbone.View.extend({
   playDeck: function() {
       // Pull any existing gameState value from localStorage via Basil
       app.gameState = app.basil.get('gameState');
-
+      debugger;
       // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
       if (app.gameState && app.gameState.gameInProgress === true) {
 

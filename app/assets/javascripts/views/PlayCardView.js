@@ -69,8 +69,7 @@ app.PlayCardView = Backbone.View.extend({
   },
 
   finishGame: function() {
-    console.log("Finished Game");
-    console.log(app.basil.get("gameState"));
+    app.router.navigate('/finish', true);
   }
 
 });
