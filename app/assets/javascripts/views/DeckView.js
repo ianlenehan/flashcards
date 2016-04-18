@@ -64,8 +64,8 @@ app.DeckView = Backbone.View.extend({
       deck_id: app.deck.id
     });
     favourite.save();
-    // favourites.create(this.newAttributes());
     console.log("favourited", app.deck.id, app.currentUser.id);
+    debugger;
   },
 
   render: function() {
