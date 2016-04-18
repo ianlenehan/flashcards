@@ -5,7 +5,8 @@ app.DeckView = Backbone.View.extend({
 
   events: {
     'click #play': 'playDeck',
-    'click #fav': 'favouriteDeck'
+    'click #fav': 'favouriteDeck',
+    'click .add-icon' : 'showDeckDialog'
   },
 
   playDeck: function() {
@@ -50,14 +51,6 @@ app.DeckView = Backbone.View.extend({
 
   },
 
-  // newAttributes: function() {
-  //   return {
-  //     user_id: app.currentUser.id,
-  //     deck_id: app.deck.id,
-  //     completed: false
-  //   };
-  // },
-
   favouriteDeck: function(e) {
     e.preventDefault();
     var favourite = new app.Favourite();
@@ -75,12 +68,17 @@ app.DeckView = Backbone.View.extend({
         $('#fav').attr('src', '/assets/favStar.png');
       } else {
         $('#fav').attr('src', '/assets/favStarOff.png');
-
           filtered[0].destroy();
-
       }
     });
 
+  },
+
+  showDeckDialog: function () {
+    $('.overlay').fadeIn();
+    var dialogTemplate = $('#deckDialogTemplate').html();
+    var dialogHTML = _.template(dialogTemplate);
+    $('.overlay').append(dialogHTML);
   },
 
   render: function() {
@@ -101,8 +99,6 @@ app.DeckView = Backbone.View.extend({
         that.$el.prepend('<img id="fav" src="assets/favStarOff.png">');
       }
     });
-
-
 
     _.each(this.model.attributes.cards, function(card) {
       var cardObject = card;
