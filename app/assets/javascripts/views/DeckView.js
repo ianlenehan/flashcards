@@ -90,8 +90,12 @@ app.DeckView = Backbone.View.extend({
       $('#deck-input').autocomplete({
         source: app.userDeckNames,
         minLength: 2,
-        within: $(".dialog"),
+        appendTo: $(".dialog"),
         select: function(event, ui) {
+          app.selectedDeck = app.userDecks.filter(function(deck) {
+            return deck.get('name') === ui.item.value;
+          });
+          console.log(app.selectedDeck[0].attributes.id); 
           $('#user-selection').html("Selected" + ui.item.value);
         }
       });
