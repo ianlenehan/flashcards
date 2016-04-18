@@ -9,11 +9,10 @@ app.DeckView = Backbone.View.extend({
   },
 
   playDeck: function() {
-    // Pull any existing gameState value from localStorage via Basil
-    app.gameState = app.basil.get('gameState');
-
-    // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
-    if (app.gameState && app.gameState.gameInProgress === true) {
+      // Pull any existing gameState value from localStorage via Basil
+      app.gameState = app.basil.get('gameState');
+      // If no gameState found, or gameState.gameInProgress === false, navigate to the requested playDeckView.
+      if (app.gameState && app.gameState.gameInProgress === true) {
 
       var existingGameDeck = app.gameState.currentDeck;
       var requestedGameDeck = app.deck.get("id");
@@ -36,13 +35,15 @@ app.DeckView = Backbone.View.extend({
 
     // Click handlers to handle both options
     $('#toExistingGame').on('click', function() {
-      app.router.navigate('/decks/' + existingGameDeck + '/play', true);
+        $popUp.remove();
+        app.router.navigate('/decks/'+ existingGameDeck + '/play', true);
     });
 
     $('#toNewGame').on('click', function() {
-      app.basil.remove('gameState');
-      app.gameState = null;
-      app.router.navigate('/decks/' + requestedGameDeck + '/play', true);
+        $popUp.remove();
+        app.basil.remove('gameState');
+        app.gameState = null;
+        app.router.navigate('/decks/'+ requestedGameDeck + '/play', true);
     });
 
   },
