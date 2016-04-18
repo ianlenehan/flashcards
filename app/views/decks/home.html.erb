@@ -50,7 +50,36 @@ TEST
 
 </script>
 
+<!-- PLAY CARD TEMPLATE -->
 
+<script id="playCardTemplate" type="text/template">
+
+  <div class="play-flip-container" ontouchstart="this.classList.toggle('hover');">
+		<div class="play-flipper">
+			<div class="play-front">
+				<!-- front content -->
+        <div class="play-card-contents">
+  				<p class="play-c-title">Q:</p>
+  				<p class="play-question"> <%%= question %> </p>
+        </div>
+			</div>
+			<div class="play-back">
+				<!-- back content -->
+        <div class="play-card-contents">
+  				<p class="play-c-title">A:</p>
+  				<p class="play-answer"> <%%= answer %></p>
+        </div>
+			</div>
+		</div>
+	</div>
+
+  <div id="user-answer">
+    <input id="input-answer">
+    <button id="submit-answer">Check Answer</button>
+  </div>
+
+
+</script>
 
 
 <!---       SIDEBAR TEMPLATE       -->

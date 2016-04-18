@@ -71,14 +71,6 @@ app.AppRouter = Backbone.Router.extend({
       // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
       // If gameState is for a different deck, redirect to it.
       if (app.gameState.currentDeck === deckId ) {
-        // app.deck_id = parseInt(deckId);
-        // app.deck = new app.Deck({id:app.deck_id});
-        // app.deck.fetch().done( function(){
-        //     var deckView = new app.DeckView({
-        //       model: app.deck,
-        //     });
-        //     deckView.render();
-        // });
         if (app.deck && app.deck.get('id') === deckId) {
           console.log("branch 1 ran");
           var playDeckView = new app.PlayDeckView( { model: app.deck } );
@@ -99,17 +91,24 @@ app.AppRouter = Backbone.Router.extend({
       console.log("Branch 4 ran");
       // If no game state, create a new game state object and save it to localStorage
       // then render playDeckView.
-      var newGameState = {
-          gameInProgress: true,
-          currentDeck: deckId,
-          currentCard: 0,
-          gameHistory: []
-      };
-
-      app.gameState = newGameState;
-      app.basil.set("gameState", app.gameState);
       app.deck = new app.Deck({ id: parseInt(deckId) });
       app.deck.fetch().done(function() {
+
+        console.log(app.deck);
+
+        var cards = app.deck.attributes.cards;
+        cards = _.shuffle(cards);
+
+        var newGameState = {
+            gameInProgress: true,
+            currentDeck: deckId,
+            currentCard: 0,
+            gameDetails: cards
+        };
+
+        app.gameState = newGameState;
+        app.basil.set("gameState", app.gameState);
+
         var playDeckView = new app.PlayDeckView( { model: app.deck } );
         playDeckView.render();
       });
