@@ -23,7 +23,7 @@ app.AppRouter = Backbone.Router.extend({
       score.set({
         user_id: app.currentUser.toJSON().id,
         deck_id: deckId,
-        raw_score: rawScore,
+        score: rawScore,
         percent_score: percentScore
       });
     score.save();
@@ -111,7 +111,7 @@ app.AppRouter = Backbone.Router.extend({
     if (app.gameState) {
       // If gameState exists, and is for same deck as attempted navigation, render playDeckView.
       // If gameState is for a different deck, redirect to it.
-      if (app.gameState.currentDeck === deckId ) {
+      if (app.gameState.currentDeckId === deckId ) {
         if (app.deck && app.deck.get('id') === deckId) {
           console.log("branch 1 ran");
           var playDeckView = new app.PlayDeckView( { model: app.deck } );
