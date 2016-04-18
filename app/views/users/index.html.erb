@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name first</th>
-      <th>Name last</th>
+      <th>Name</th>
       <th>Email</th>
       <th>Lifetime score</th>
       <th>Photo</th>
@@ -18,8 +17,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name_first %></td>
-        <td><%= user.name_last %></td>
+        <td><%= user.name_first %><%= user.name_last %></td>
         <td><%= user.email %></td>
         <td><%= user.lifetime_score %></td>
         <td><%= user.photo %></td>

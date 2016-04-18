@@ -2,17 +2,11 @@ body {
   margin: 0;
 }
 
-.nav-bar {
-  background: gainsboro;
-  padding: 10px;
-  z-index: 1000000;
-  ul {
-    list-style: none;
-    li {
-      padding: 0 5px 0 5px;
-      display: inline-block;
-    }
-  }
+img.profile {
+  width: 200px;
+}
+nav {
+  z-index: 9999999999;
 }
 
 #sidebar {
