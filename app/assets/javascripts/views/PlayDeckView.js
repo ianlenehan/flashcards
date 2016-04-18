@@ -12,8 +12,8 @@ app.PlayDeckView = Backbone.View.extend({
      this.$el.empty();
      $playCard = $('<div>').attr('id', 'playCard');
      this.$el.append($playCard);
-     var playCardView = new app.PlayCardView();
-     playCardView.render();
+     app.playCardView = new app.PlayCardView();
+     app.playCardView.render();
   },
 
 });

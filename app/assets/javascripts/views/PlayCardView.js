@@ -5,10 +5,13 @@ app.PlayCardView = Backbone.View.extend({
   el: '#playCard',
 
   events: {
-    'click #submit-answer': 'checkAnswer'
+    'click #submit-answer': 'checkAnswer',
+    'click #next-card': 'getNextCard',
+    'click #finish-game': 'finishGame'
   },
 
   render: function() {
+    this.$el.empty();
     var gameState = app.basil.get("gameState");
     var currentCardIndex = gameState.currentCardIndex;
     var currentDeck = gameState.currentDeck;
@@ -49,10 +52,25 @@ app.PlayCardView = Backbone.View.extend({
 
 
 
-    gameState.currentCardIndex += 1;
-    app.basil.set("gameState", gameState);
+     if (gameState.currentCardIndex === gameState.gameDetails.length - 1) {
+       this.$el.append('<button id="finish-game">Finish Game</button>');
+       app.basil.set("gameState", gameState);
+     } else {
+       this.$el.append('<button id="next-card">Next Card</button>');
+       gameState.currentCardIndex += 1;
+       app.basil.set("gameState", gameState);
+     }
 
 
+  },
+
+  getNextCard: function() {
+    app.playCardView.render();
+  },
+
+  finishGame: function() {
+    console.log("Finished Game");
+    console.log(app.basil.get("gameState"));
   }
 
 });
