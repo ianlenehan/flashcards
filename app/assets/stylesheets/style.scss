@@ -2,17 +2,11 @@ body {
   margin: 0;
 }
 
-.nav-bar {
-  background: gainsboro;
-  padding: 10px;
-  z-index: 1000000;
-  ul {
-    list-style: none;
-    li {
-      padding: 0 5px 0 5px;
-      display: inline-block;
-    }
-  }
+img.profile {
+  width: 200px;
+}
+nav {
+  z-index: 9999999999;
 }
 
 #sidebar {
@@ -86,4 +80,31 @@ h2 {
 
 #fav {
   width: 25px;
+}
+
+.overlay {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
+.dialog {
+  transform: translate(-50%, -50%);
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  width: 30%;
+  height: 50%;
+  padding: 20px;
+  align-items: center;
+}
+
+.ui-front {
+  list-style: none;
 }

@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if @current_user.present?
+      redirect_to home_path
+    end
   end
 
   def create
