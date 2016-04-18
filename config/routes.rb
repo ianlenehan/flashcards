@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  # post '/#favourites' => 'favourites#new'
 
   resources :scores
   resources :tags
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   resources :decks
   resources :cards
   resources :users
-  resources :favourites, :only => [:create]
+  resources :favourites
 
   root :to => 'decks#home'
 

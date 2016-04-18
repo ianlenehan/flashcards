@@ -1,6 +1,8 @@
 class FavouritesController < ApplicationController
+
   def index
     @favourites = Favourite.all
+    render json: @favourites
   end
 
   def create
