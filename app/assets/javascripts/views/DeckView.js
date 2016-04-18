@@ -5,7 +5,8 @@ app.DeckView = Backbone.View.extend({
 
   events: {
     'click #play': 'playDeck',
-    'click #fav': 'favouriteDeck'
+    'click #fav': 'favouriteDeck',
+    'click .add-icon': 'promptForCardAdd'
   },
 
   playDeck: function() {
