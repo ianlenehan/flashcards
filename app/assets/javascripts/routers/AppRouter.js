@@ -98,6 +98,7 @@ app.AppRouter = Backbone.Router.extend({
     app.decks = new app.Decks();
     var appView = new app.AppView();
     appView.render();
+
     if (filter === "mydecks") {
       app.decks.fetch().done(function() {
         app.myDecks = app.decks.where({
