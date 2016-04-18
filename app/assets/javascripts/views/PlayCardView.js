@@ -23,12 +23,14 @@ app.PlayCardView = Backbone.View.extend({
     var playCardTemplate = $('#playCardTemplate').html();
     var playCardHTML = _.template(playCardTemplate);
     this.$el.html( playCardHTML(cardToPlay) );
+    this.$el.addClass('animated rollIn');
+
 
   },
 
   checkAnswer: function() {
-    console.log("checkAnswer called");
-
+    $('#submit-answer').hide();
+    $('#input-answer').hide();
     $('.play-flipper').addClass('toggle-flip');
 
     var gameState = app.basil.get("gameState");
@@ -44,14 +46,21 @@ app.PlayCardView = Backbone.View.extend({
     if (editDistance === 0) {
       // Correct
       currentCard.correct = true;
+      setTimeout(function(){
+        $('.correct').removeClass('hidden').addClass('animated fadeInDown');
+      }, 800);
+
+
+
 
     } else {
       // Incorrect
       currentCard.correct = false;
+      setTimeout(function(){
+        $('.incorrect').removeClass('hidden').addClass('animated fadeInDown');
+      }, 800);
+
     }
-
-
-
      if (gameState.currentCardIndex === gameState.gameDetails.length - 1) {
        this.$el.append('<button id="finish-game">Finish Game</button>');
        app.basil.set("gameState", gameState);
@@ -65,7 +74,14 @@ app.PlayCardView = Backbone.View.extend({
   },
 
   getNextCard: function() {
-    app.playCardView.render();
+    this.$el.removeClass('animated rollIn');
+    this.$el.addClass('animated zoomOutRight');
+
+    setTimeout(function(){
+      $('#playCard').removeClass('animated zoomOutRight');
+      app.playCardView.render();
+    }, 500);
+
   },
 
   finishGame: function() {

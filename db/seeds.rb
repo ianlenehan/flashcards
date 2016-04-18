@@ -104,3 +104,8 @@ ian.decks << custers_last_stand << general_grant << general_lee
 ian.decks << ruby_loops << ruby_classes
 
 harrison.decks << js_variables << js_conditionals
+
+#### ------------- ASSIGNING FAVOURITE DECKS TO USERS ------------ ####
+
+Favourite.create(deck_id: custers_last_stand.id, user_id: ian.id)
+Favourite.create(deck_id: ruby_loops.id, user_id: ian.id)
