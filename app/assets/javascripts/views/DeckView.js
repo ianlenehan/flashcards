@@ -91,18 +91,25 @@ app.DeckView = Backbone.View.extend({
       _.each(app.userDecks, function(deck) {
         app.userDeckNames.push(deck.attributes.name);
       });
+      $('.deck-input').on('keydown', function () {
+      });
 
-      $('#deck-input').autocomplete({
+      $('.deck-input:not(.ui-autocomplete-input)').autocomplete({
         source: app.userDeckNames,
         minLength: 2,
         appendTo: $(".dialog"),
         select: function(event, ui) {
+
           app.selectedDeck = app.userDecks.filter(function(deck) {
             return deck.get('name') === ui.item.value;
           });
           that.addToDeck(app.selectedDeck[0].attributes.id, app.cardID);
-          // console.log(app.selectedDeck[0].attributes.id);
-          $('#user-selection').html("Selected" + ui.item.value);
+          $('#user-selection').html("Added to your " + ui.item.value + " deck!");
+          setTimeout(function(){
+            $('.overlay').fadeOut(function () {
+              $(this).empty();
+            });
+          }, 1200);
         }
       });
     });
@@ -110,28 +117,15 @@ app.DeckView = Backbone.View.extend({
   },
 
   addToDeck: function (deck, card) {
-    app.deck = parseInt(deck);
-    app.card = parseInt(card);
-    console.log("Deck", deck, "Card", card);
-    app.decks = new app.Decks();
-    app.decks.fetch().done( function () {
-      app.matchedDeck = app.decks.where({
-        id : app.deck
-      });
-      app.cards = new app.Cards();
-      app.cards.fetch().done( function () {
-        app.matchedCard = app.cards.where({
-          id : app.card
-        });
-        app.matchedDeck[0].attributes.cards.push(app.matchedCard[0]);
-        app.matchedDeck[0].save();
-        debugger;
-      });
-
+    var deckID = parseInt(deck);
+    var cardID = parseInt(card);
+    $.ajax('/decks/' + deckID + '/add', {
+      method: 'post',
+      data: {
+        card_id : cardID
+      }
     });
   },
-
-
 
   render: function() {
     $('#deckList').remove();
