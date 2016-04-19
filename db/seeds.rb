@@ -2,6 +2,7 @@
 #### ------------- DESTROY EVERYTHING ------------- ####
 
 # Keep in this order
+Score.destroy_all
 Card.destroy_all
 Deck.destroy_all
 Category.destroy_all
@@ -32,8 +33,11 @@ us_civil_war = Category.create(name: 'US Civil War')
 # SPANISH
 
 spanish_101 = Deck.create(name: 'Spanish 101' )
+spanish_101.tag_list.add("spanish, beginners", parse: true)
 spanish_food = Deck.create(name: 'Spanish - Food')
+spanish_food.tag_list.add("spanish, beginners, food", parse: true)
 spanish_getting_around = Deck.create(name: 'Spanish - Getting Around')
+spanish_getting_around.tag_list.add("spanish, beginners, transport", parse: true)
 
 # FRENCH
 

@@ -9,6 +9,14 @@ nav {
   z-index: 9999999999;
 }
 
+#tagList {
+  min-height: 80vh;
+  width: 200px;
+  border-radius: 10px;
+  position: absolute;
+  
+}
+
 #sidebar {
   position: fixed;
   height: 100vh;
