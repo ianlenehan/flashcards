@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: ianlenehan
+  api_key: '763857653399167'
+  api_secret: T6xVSQNJKp6P1AIHcgzf20nlfpI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: ianlenehan
+  api_key: '763857653399167'
+  api_secret: T6xVSQNJKp6P1AIHcgzf20nlfpI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: ianlenehan
+  api_key: '763857653399167'
+  api_secret: T6xVSQNJKp6P1AIHcgzf20nlfpI
+  enhance_image_tag: true
+  static_image_support: false
