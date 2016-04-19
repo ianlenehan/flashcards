@@ -39,6 +39,15 @@ class DecksController < ApplicationController
     end
   end
 
+  def addCard
+    @deck = Deck.find(params[:deckid])
+    @card = Card.find params[:card_id]
+    @deck.cards << @card
+    render :json => {
+      :success => 'Done'
+    }
+  end
+
   # PATCH/PUT /decks/1
   # PATCH/PUT /decks/1.json
   def update
@@ -71,6 +80,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:name, :user_id, :tag_list)
+      params.require(:deck).permit(:name, :user_id, :tag_list, :deckid, :cardid)
     end
 end

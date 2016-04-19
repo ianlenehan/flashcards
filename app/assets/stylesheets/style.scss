@@ -108,3 +108,13 @@ h2 {
 .ui-front {
   list-style: none;
 }
+
+.ui-helper-hidden-accessible {
+  div {
+    display: none;
+  }
+}
+
+#user-selection {
+  padding-top: 20px;
+}
