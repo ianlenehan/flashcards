@@ -2,7 +2,7 @@ var app = app || {};
 
 app.GameCompleteView = Backbone.View.extend({
 
-  el: '#playCard',
+  el: '#',
 
   events: {
     'click #submit-answer': 'checkAnswer',

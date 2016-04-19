@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 
-<p>
-<img src="<%= @user.photo  %>" />
+<div id="profile"><p>
+<img class="profile" src="<%= @user.photo  %>" />
 </p>
 <p>
   <%= @user.name_first %>
@@ -21,3 +21,4 @@
 </p>
 
 <%= link_to '<<', users_path %>
+</div>
