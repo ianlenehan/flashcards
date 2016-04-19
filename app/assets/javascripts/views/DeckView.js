@@ -30,20 +30,23 @@ app.DeckView = Backbone.View.extend({
 
   // Creates pop up asking the user to confirm playing new deck if they have a game in progress
   existingGamePrompt: function(existingGameDeck, requestedGameDeck) {
+    console.log("hello");
     // THIS IS JUST FOR TESTING PROOF OF CONCEPT, NEEDS TO BE REFACTORED INTO TEMPLATE OR SOMETHING
-    var $popUp = $('<div>').addClass('popUp');
+    var $overlay = $('<div>').addClass('overlay').css({'display':'block'});
+    var $dialog = $('<div>').addClass('dialog');
+    $overlay.append($dialog);
     var content = "<button id='toExistingGame'>Play Existing Game</button><button id='toNewGame'>Play New Game</button>";
-    $popUp.html(content);
-    $('body').prepend($popUp);
+    $dialog.html(content);
+    $('body').prepend($overlay);
 
     // Click handlers to handle both options
     $('#toExistingGame').on('click', function() {
-      $popUp.remove();
+      $overlay.remove();
       app.router.navigate('/decks/' + existingGameDeck + '/play', true);
     });
 
     $('#toNewGame').on('click', function() {
-      $popUp.remove();
+      $overlay.remove();
       app.basil.remove('gameState');
       app.gameState = null;
       app.router.navigate('/decks/' + requestedGameDeck + '/play', true);
