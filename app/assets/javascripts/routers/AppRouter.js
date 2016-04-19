@@ -51,6 +51,7 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   showDeck: function(id, deckId) {
+    console.log("Show Deck called");
     var appView = new app.AppView();
     appView.render();
     app.deck_id = parseInt(deckId);
@@ -66,6 +67,7 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   showDecks: function(id) {
+    console.log("Show decks caled");
     var appView = new app.AppView();
     appView.render();
     app.cat_id = parseInt(id);
@@ -74,19 +76,46 @@ app.AppRouter = Backbone.Router.extend({
       id: id
     });
     category.fetch().done(function() {
+      
+      app.current_category = category;
       app.decks = new app.Decks();
       app.decks.fetch().done(function() {
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
-        var decksView = new app.DecksView({
+        app.decksView = new app.DecksView({
           collection: matchingDecks,
           model: category
         });
-        decksView.render();
+        app.decksView.render();
+
+        var tags = [];
+
+        _.each(matchingDecks, function(deck) {
+          tags.push(deck.attributes.tags);
+        });
+
+        tags = _.chain(tags).flatten().uniq().value();
+
+        tagsView = new app.TagsView({
+          collection: tags,
+          category_id: id
+        });
+
+        tagsView.render();
+
+        // GET ALL THE tags
+        // On click of a tag, pull out app.decks again, filter it down
+        // based on the tags selected, pass that through to decks view as matching app.decksView
+        // then re-render app.decksView.
+
+
+
       });
     });
+
   },
+
 
   myDecks: function(id, filter) {
     var user_id = parseInt(id);
