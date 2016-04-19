@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
 
   def current_user
-    render json: @current_user
+    render json: @current_user.to_json(include: [:decks, ])
   end
 
 

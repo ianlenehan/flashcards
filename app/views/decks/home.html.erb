@@ -40,7 +40,7 @@ TEST
 			<div class="back">
 				<!-- back content -->
         <div class="card-contents">
-          <img class="add-icon" src="../assets/add.png" alt="add to deck">
+          <img class="add-icon" src="../assets/add.png" alt="add to deck" data-card-id="<%%= id  %>">
   				<p class="c-title">A:</p>
   				<p cpass="answer"> <%%= answer %></p>
         </div>
@@ -100,15 +100,19 @@ TEST
 
 </script>
 
-<!-- PROFILE PAGE TEMPLATE -->
-<!-- <script id="myDecksViewTemplate" type="text/template">
 
-  <div id="profileDetails">
-    <img src="<%%= photo  %>">
-    <p>Name: <%%= name_first %> <%%= name_last %></p>
+<!---       ADD TO DECK DIALOG TEMPLATE       -->
+<script id="deckDialogTemplate" type="text/template">
+  <div class="dialog">
+    <label>Add to Deck: </label>
+    <input id="deck-input" type="text">
+    <div id="user-selection"></div>
   </div>
 
-  <div id="myDecks">
+  <div id="sidebarLinks">
   </div>
 
-</script> -->
+  <div id="recentlyPlayed">
+  </div>
+
+</script>
