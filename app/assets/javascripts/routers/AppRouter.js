@@ -69,6 +69,7 @@ app.AppRouter = Backbone.Router.extend({
   showDecks: function(id) {
     console.log("Show decks caled");
     var appView = new app.AppView();
+    app.activeTags = [];
     appView.render();
     app.cat_id = parseInt(id);
 
@@ -76,33 +77,34 @@ app.AppRouter = Backbone.Router.extend({
       id: id
     });
     category.fetch().done(function() {
-      
+
       app.current_category = category;
       app.decks = new app.Decks();
       app.decks.fetch().done(function() {
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
+
+        var tags = [];
+        _.each(matchingDecks, function(deck) {
+          tags.push(deck.attributes.tags);
+        });
+        app.currentTags = _.chain(tags).flatten().uniq().value();
+
         app.decksView = new app.DecksView({
           collection: matchingDecks,
           model: category
         });
         app.decksView.render();
 
-        var tags = [];
 
-        _.each(matchingDecks, function(deck) {
-          tags.push(deck.attributes.tags);
-        });
 
-        tags = _.chain(tags).flatten().uniq().value();
-
-        tagsView = new app.TagsView({
-          collection: tags,
+        app.tagsView = new app.TagsView({
+          collection: app.currentTags,
           category_id: id
         });
 
-        tagsView.render();
+        app.tagsView.render();
 
         // GET ALL THE tags
         // On click of a tag, pull out app.decks again, filter it down
