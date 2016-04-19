@@ -2,20 +2,66 @@ body {
   margin: 0;
 }
 
+#primaryContent {
+  text-align: center;
+  display:inline-block;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+#deckList {
+  text-align: center;
+}
+
+.deck {
+    display: inline-block;
+    width: 100px;
+}
+
+
+#profile {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
 img.profile {
   width: 200px;
+  border-radius: 50%
 }
 nav {
   z-index: 9999999999;
 }
 
+#tagList {
+  min-height: 80vh;
+  width: 200px;
+  border-radius: 10px;
+  position: absolute;
+  right: 25vw;
+  top: 100px;
+  background-color: gainsboro;
+  padding: 20px;
+}
+
+.tagItem {
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  border-radius: 4px;
+  text-align: left;
+  background-color: lightBlue;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 #sidebar {
   position: fixed;
+  display: inline-block;
   height: 100vh;
-  width: 250px;
+  width: 20vw;
   top: 0;
   right: 0;
-  background-color: green;
+  background-color: darkslategrey;
   z-index: 10;
 }
 
@@ -54,11 +100,18 @@ nav {
   z-index: 10;
 }
 
-#categories, #decks {
+#categories{
   width: 800px;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
+}
+
+#categoryList {
+  margin: 0 auto;
+  width: 50vw
+
+
 }
 .category, .deck {
   width: 200px;

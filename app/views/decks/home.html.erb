@@ -9,7 +9,8 @@ TEST
 
   <div id="primaryContent">
      <div id="categoryList"></div>
-     <div id="deckList"></div>
+     <div id="deckList">
+     </div>
      <div id="cards">
        <!-- card template is rendered here -->
      </div>
@@ -19,7 +20,14 @@ TEST
   </div>
 </script>
 
-
+<script id="tagsTemplate" type="text/template">
+  <div id="tagList">
+     <h3>Filter by Tag</h3>
+     <input type="text">
+     <div id="tags">
+     </div>
+   </div>
+</script>
 
 <script id="categoryView" type="text/template">
     <div id="categories"></div>
