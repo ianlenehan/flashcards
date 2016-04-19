@@ -27,6 +27,7 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
+    @deck.tag_list.add(:tag_list, parse: true)
 
     respond_to do |format|
       if @deck.save

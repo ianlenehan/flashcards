@@ -85,6 +85,7 @@ app.PlayCardView = Backbone.View.extend({
   },
 
   finishGame: function() {
+    
     app.router.navigate('/finish', true);
   }
 
