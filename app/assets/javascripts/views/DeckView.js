@@ -107,7 +107,7 @@ app.DeckView = Backbone.View.extend({
       $('.deck-input:not(.ui-autocomplete-input)').autocomplete({
         source: app.userDeckNames,
         minLength: 2,
-        appendTo: $(".dialog"),
+        appendTo: $("#deck-input-div"),
         select: function(event, ui) {
 
           app.selectedDeck = app.userDecks.filter(function(deck) {
@@ -135,15 +135,6 @@ app.DeckView = Backbone.View.extend({
         card_id : cardID
       }
     });
-  },
-
-  closeDialog: function() {
-    console.log('close me');
-    setTimeout(function(){
-      $('.overlay').fadeOut(function () {
-        $('.overlay').empty();
-      });
-    }, 1200);
   },
 
   render: function() {
