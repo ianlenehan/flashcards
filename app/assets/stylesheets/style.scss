@@ -2,10 +2,23 @@ body {
   margin: 0;
 }
 
-
 #primaryContent {
-  width: 83vw;
+  text-align: center;
+  display:inline-block;
+  width: 80vw;
+  margin: 0 auto;
 }
+
+#deckList {
+  text-align: center;
+}
+
+.deck {
+    display: inline-block;
+    width: 100px;
+}
+
+
 #profile {
   width: 500px;
   margin: 0 auto;
@@ -21,11 +34,12 @@ nav {
 
 #sidebar {
   position: fixed;
+  display: inline-block;
   height: 100vh;
-  width: 250px;
+  width: 20vw;
   top: 0;
   right: 0;
-  background-color: green;
+  background-color: darkslategrey;
   z-index: 10;
 }
 
@@ -64,7 +78,7 @@ nav {
   z-index: 10;
 }
 
-#categories, #decks {
+#categories{
   width: 800px;
   height: 400px;
   display: flex;
