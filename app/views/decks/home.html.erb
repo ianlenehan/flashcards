@@ -47,7 +47,7 @@ TEST
 			<div class="back">
 				<!-- back content -->
         <div class="card-contents">
-          <img class="add-icon" src="../assets/add.png" alt="add to deck" data-card-id="<%%= id  %>">
+          <img class="add-icon" src="../assets/add.png" alt="add to deck" data-id="<%%= id %>">
   				<p class="c-title">A:</p>
   				<p cpass="answer"> <%%= answer %></p>
         </div>
@@ -111,8 +111,9 @@ TEST
 <!---       ADD TO DECK DIALOG TEMPLATE       -->
 <script id="deckDialogTemplate" type="text/template">
   <div class="dialog">
+    <img id="close-dialog" src="/assets/closedialog.png" alt="">
     <label>Add to Deck: </label>
-    <input id="deck-input" type="text">
+    <div id="deck-input-div"><input class="deck-input" type="text"></div>
     <div id="user-selection"></div>
   </div>
 
