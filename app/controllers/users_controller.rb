@@ -25,7 +25,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    req = Cloudinary::Uploader.upload( params[:user][:photo] )
+
     @user = User.new(user_params)
+    @user.photo = req["url"]
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to home_path
+    else
+      render :new
+    end
+
 
     respond_to do |format|
       if @user.save
@@ -41,15 +51,21 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    req = Cloudinary::Uploader.upload( params[:user][:photo] ) if params[:user][:photo]
+    user = @current_user
+    user.photo = req["url"] if req
+    user.update user_params
+    redirect_to user_path
+
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to @user, notice: 'User was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @user }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /users/1
@@ -76,6 +92,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :name_first, :name_last, :email, :password, :password_confirmation, :lifetime_score, :photo, :admin)
+      params.require(:user).permit(:id, :name_first, :name_last, :email, :password, :password_confirmation, :lifetime_score, :admin)
     end
 end
