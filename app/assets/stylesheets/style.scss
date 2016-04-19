@@ -133,6 +133,7 @@ h2 {
 
 #fav {
   width: 25px;
+  margin: 0 0 6px 10px;
 }
 
 .overlay {
@@ -156,6 +157,14 @@ h2 {
   height: 50%;
   padding: 20px;
   align-items: center;
+  border-radius: 8px;
+}
+
+#close-dialog {
+  width: 30px;
+  position: relative;
+  top: -30px;
+  left: 344px;
 }
 
 .ui-front {
