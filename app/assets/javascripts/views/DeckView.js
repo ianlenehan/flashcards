@@ -73,7 +73,11 @@ app.DeckView = Backbone.View.extend({
     });
   },
 
-  showDeckDialog: function() {
+
+
+  showDeckDialog: function(e) {
+    var that = this;
+    app.cardID = e.currentTarget.dataset.id;
     $('.overlay').fadeIn();
     var dialogTemplate = $('#deckDialogTemplate').html();
     var dialogHTML = _.template(dialogTemplate);
@@ -87,6 +91,7 @@ app.DeckView = Backbone.View.extend({
       _.each(app.userDecks, function(deck) {
         app.userDeckNames.push(deck.attributes.name);
       });
+
       $('#deck-input').autocomplete({
         source: app.userDeckNames,
         minLength: 2,
@@ -95,13 +100,38 @@ app.DeckView = Backbone.View.extend({
           app.selectedDeck = app.userDecks.filter(function(deck) {
             return deck.get('name') === ui.item.value;
           });
-          console.log(app.selectedDeck[0].attributes.id); 
+          that.addToDeck(app.selectedDeck[0].attributes.id, app.cardID);
+          // console.log(app.selectedDeck[0].attributes.id);
           $('#user-selection').html("Selected" + ui.item.value);
         }
       });
     });
 
   },
+
+  addToDeck: function (deck, card) {
+    app.deck = parseInt(deck);
+    app.card = parseInt(card);
+    console.log("Deck", deck, "Card", card);
+    app.decks = new app.Decks();
+    app.decks.fetch().done( function () {
+      app.matchedDeck = app.decks.where({
+        id : app.deck
+      });
+      app.cards = new app.Cards();
+      app.cards.fetch().done( function () {
+        app.matchedCard = app.cards.where({
+          id : app.card
+        });
+        app.matchedDeck[0].attributes.cards.push(app.matchedCard[0]);
+        app.matchedDeck[0].save();
+        debugger;
+      });
+
+    });
+  },
+
+
 
   render: function() {
     $('#deckList').remove();
@@ -114,10 +144,8 @@ app.DeckView = Backbone.View.extend({
         return fave.get('user_id') === app.currentUser.id && fave.get('deck_id') === that.model.id;
       });
       if (app.favourite.length) {
-        console.log('there is a fav');
         that.$el.prepend('<img id="fav" src="assets/favStar.png">');
       } else {
-        console.log('no fav');
         that.$el.prepend('<img id="fav" src="assets/favStarOff.png">');
       }
     });
