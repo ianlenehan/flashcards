@@ -54,7 +54,7 @@
 /* front pane, placed above back */
 .front {
 	z-index: 2;
-	background-image: url('../assets/CardFront.png');
+	background-image: url('/assets/CardFront.png');
 	display: inline-block;
 	/* for firefox 31 */
 	transform: rotateY(0deg);

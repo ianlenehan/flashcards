@@ -11,11 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user
-    decks = Deck.all
-    scores = Score.all
-    @myDecks = decks.where :user_id => @user.id
-    myScores = scores.where :user_id => @user.id
-    @myScores = myScores.order(params[:sort]).reverse;
+    @decks = Deck.find(user_id) 
   end
 
   # GET /users/new
