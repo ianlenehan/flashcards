@@ -42,6 +42,11 @@ app.DecksView = Backbone.View.extend({
           console.log($(event.target).text());
           return tag !== $(event.target).text();
         });
+        //   debugger;
+        // app.tagsView = new app.TagsView({
+        //   collection: app.currentTags
+        // });
+
         app.tagsView.render();
       });
     });
