@@ -211,6 +211,15 @@ li:hover {
   padding-top: 20px;
 }
 
+
+#gameSummary {
+  min-height: 50vh;
+  width: 50vw;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 100px auto;
+}
+
 .buttons {
   border: 1px solid #FF9C3E;
   background: #FFCC9B;
