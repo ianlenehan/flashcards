@@ -9,6 +9,15 @@ body {
   padding-top: 50px;
 }
 
+.panel {
+  max-width: 50vw;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  h3 {
+    display: inline;
+  }
+}
 #primaryContent {
   text-align: center;
   display:inline-block;
@@ -159,6 +168,14 @@ h2 {
   margin: 0 0 6px 10px;
 }
 
+#gameSummary {
+  min-height: 50vh;
+  width: 50vw;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 100px auto;
+}
+
 .overlay {
   display: none;
   background: rgba(0, 0, 0, 0.5);
@@ -225,12 +242,13 @@ li:hover {
   padding-top: 20px;
 }
 
+
 button {
   border: none !important;
   background: $secondary-color-light !important;
   border-radius: 3px;
   padding: 5px !important;
-}
+
 
 button:hover {
   background: $secondary-color !important;
