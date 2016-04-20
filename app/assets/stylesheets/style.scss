@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Martel Sans', sans-serif !important;
+  padding-top: 50px;
 }
 
 #primaryContent {
@@ -8,7 +9,6 @@ body {
   display:inline-block;
   width: 80vw;
   margin: 0 auto;
-  padding-top: 50px;
 }
 
 #deckList {
@@ -40,8 +40,11 @@ img.profile {
   width: 100vw;
   top: 0;
   left: 0;
-  * {
+  a {
     color: white !important;
+  };
+  .dropdown li {
+    color: grey !important;
   }
 }
 

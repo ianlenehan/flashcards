@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user
+    @decks = Deck.find(user_id) 
   end
 
   # GET /users/new
