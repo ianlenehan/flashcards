@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/home' => 'decks#home'
   delete '/favourites/:id' => 'favourites#destroy'
-  post '/decks/:deckid/add' => 'decks#addCard'
-
+  post '/cards/:id/remove' => 'cards#remove', :as => 'card_remove'
 
 
   resources :scores
