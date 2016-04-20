@@ -14,21 +14,28 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
+    @deck = Deck.find(flash[:deck_id])
     @card = Card.new
+    flash.keep
   end
 
   # GET /cards/1/edit
   def edit
+    @deck = Deck.find(flash[:deck_id])
+    flash.keep
   end
 
   # POST /cards
   # POST /cards.json
   def create
     @card = Card.new(card_params)
+    @card.user_id = @current_user.id
+    @deck = Deck.find(flash[:deck_id])
+    @deck.cards << @card
 
     respond_to do |format|
       if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
+        format.html { redirect_to @deck, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }
@@ -40,9 +47,11 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
+    @deck = Deck.find(flash[:deck_id])
+
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.html { redirect_to @deck, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
@@ -50,6 +59,15 @@ class CardsController < ApplicationController
       end
     end
   end
+
+
+def remove
+  @deck = Deck.find(flash[:deck_id])
+  @card = Card.find(params[:id])
+  @deck.cards.delete @card
+  redirect_to @deck
+end
+
 
   # DELETE /cards/1
   # DELETE /cards/1.json
@@ -69,6 +87,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:question, :answer, :user_id, :flags)
+      params.require(:card).permit(:id, :question, :answer, :user_id, :flags)
     end
 end
