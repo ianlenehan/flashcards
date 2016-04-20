@@ -4,7 +4,11 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
-    @scores = Score.all
+    if params[:deckId]
+      @scores = @current_user.scores.where("deck_id = " + params[:deckId]).order(created_at: :desc).limit(5)
+    else
+      @scores = Score.all
+    end
   end
 
   # GET /scores/1
