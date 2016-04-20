@@ -1,3 +1,8 @@
+$brand-color: #3FD7F3;
+$brand-color-light: #9AEAF9;
+$secondary-color: #FFB268;
+$secondary-color-light: #FFCC9B;
+
 body {
   margin: 0;
   font-family: 'Martel Sans', sans-serif !important;
@@ -26,6 +31,15 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
+.generic-container {
+  width: 500px;
+  margin: 0 auto;
+  h3 {
+    text-align: center;
+  }
+}
+
 img.profile {
   width: 200px;
   border-radius: 50%
@@ -33,7 +47,7 @@ img.profile {
 
 .navbar {
   z-index: 9999999999;
-  background-color: #3FD7F3;
+  background-color: $brand-color;
   border: none;
   border-radius: 0;
   position: fixed;
@@ -211,11 +225,36 @@ li:hover {
   padding-top: 20px;
 }
 
-.buttons {
-  border: 1px solid #FF9C3E;
-  background: #FFCC9B;
+button {
+  border: none !important;
+  background: $secondary-color-light !important;
+  border-radius: 3px;
+  padding: 5px !important;
 }
 
-.buttons:hover {
-  background: #FFB268;
+button:hover {
+  background: $secondary-color !important;
+}
+
+.t-center {
+  text-align: center !important;
+}
+
+.score-table {
+  max-height: 300px !important;
+  overflow: scroll !important;
+}
+
+hr {
+  border-color: $secondary-color !important;
+}
+
+#my-decks-list {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  li {
+    display: inline-block;
+    padding: 8px;
+  }
 }
