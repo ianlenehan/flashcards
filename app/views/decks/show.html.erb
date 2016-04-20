@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<p id="notice"><div class="alert alert-success" role="alert"><%= notice %></div></p>
+<% end %>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -12,10 +14,10 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"> Cards:</h3> <%= link_to 'Add a card', new_card_path %>
+    <h3 class="panel-title"> Cards</h3> <span><%= link_to 'Add a card', new_card_path %></span>
   </div>
   <div class="panel-body">
-    <table class="table table-striped" style="width:50%">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th><strong>Question</strong></th>
