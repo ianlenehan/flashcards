@@ -30,8 +30,7 @@ app.SidebarView = Backbone.View.extend({
       var sidebarViewTemplate = $('#sidebarViewTemplate').html();
       var sidebarViewHTML = _.template(sidebarViewTemplate);
       $('#sidebar').html(sidebarViewHTML(app.currentUser.toJSON()));
-      $('#sidebar').append('<button class="filterbutton buttons" id="mydecksfilter">My Decks</button><br><br>');
-      $('#sidebar').append('<button class="filterbutton buttons" id="myfavsfilter">Favourited Decks</button>');
+      $('#sidebar').append('<div id="filter-buttons"><button class="filterbutton" id="mydecksfilter">My Decks</button><br><button class="filterbutton" id="myfavsfilter">Favourited Decks</button></div');
     });
 
 

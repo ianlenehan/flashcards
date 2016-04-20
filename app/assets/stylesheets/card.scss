@@ -71,7 +71,7 @@
 	background-image: url('../assets/CardBack.png');
 }
 
-.question {
+.question, .answer {
 	font-family: 'Annie Use Your Telescope', cursive;
 	font-size: 24px;
 	padding-top: 30px;
@@ -80,13 +80,16 @@
 .c-title {
   font-size: 150%;
   color: gainsboro;
+	display: inline-block;
 }
 
 .add-icon {
 	width: 20px;
-	left: 90px;
+	left: 100px;
+	top: -10px;
 	position: relative;
 	opacity: 0.7;
+	// display: inline-block;
 }
 
 .add-icon:hover {
