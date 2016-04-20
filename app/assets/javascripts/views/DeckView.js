@@ -140,7 +140,7 @@ app.DeckView = Backbone.View.extend({
   render: function() {
     $('#deckList').remove();
     this.$el.append('<h2>' + this.model.attributes.name + '</h2>');
-    this.$el.append('<button id="play">Play this deck!</button><br>');
+    this.$el.append('<button class="buttons" id="play">Play this deck!</button><br>');
     app.favourites = new app.Favourites();
     var that = this;
     app.favourites.fetch().done(function() {

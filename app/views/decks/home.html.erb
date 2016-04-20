@@ -1,5 +1,5 @@
 <div id="main">
-TEST
+
 </div>
 
 <script id="appViewTemplate" type="text/template">
@@ -97,7 +97,9 @@ TEST
 <script id="sidebarViewTemplate" type="text/template">
 
   <div id="profilePicture">
+    <p id="user-name"><%%= name_first %> <%%= name_last %></p>
     <img src="<%%= photo  %>">
+    <p>Lifetime Score: <%%= lifetime_score %></p>
   </div>
 
   <div id="sidebarLinks">
@@ -112,8 +114,9 @@ TEST
 <!---       ADD TO DECK DIALOG TEMPLATE       -->
 <script id="deckDialogTemplate" type="text/template">
   <div class="dialog">
-    <label>Add to Deck: </label>
-    <input id="deck-input" type="text">
+    <img id="close-dialog" src="/assets/closedialog.png" alt="">
+    <label id="add-label">Add to Deck: </label>
+    <div id="deck-input-div"><input class="deck-input" type="text"></div>
     <div id="user-selection"></div>
   </div>
 

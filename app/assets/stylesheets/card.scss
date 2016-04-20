@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope);
+@import url(https://fonts.googleapis.com/css?family=Martel+Sans);
 
 * {
 	font-family: 'Open Sans', sans-serif;
@@ -6,6 +8,9 @@
 #cards {
 	width: 900px;
 	height: 100px;
+	h2 {
+		font-family: 'Martel Sans', sans-serif;
+	}
 }
 
 
@@ -34,11 +39,12 @@
 }
 
 /* hide back of pane during swap */
-.front, .back {
+.front, .back, .play-front, .play-back {
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
+	box-shadow: 0px 2px 12px #DCDCDC;
 }
 
 .card-contents{
@@ -48,27 +54,27 @@
 /* front pane, placed above back */
 .front {
 	z-index: 2;
-
+	background-image: url('../assets/CardFront.png');
 	display: inline-block;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
-  background-color: cream;
   border-radius: 20px;
   text-align: center;
-  border: 1px solid darkslategrey;
-	box-shadow: 2px 2px 2px #DCDCDC;
 }
 
 /* back, initially hidden pane */
 .back {
-
 	display: inline-block;
 	transform: rotateY(180deg);
-  background-color: cream;
   border-radius: 20px;
   text-align: center;
-  border: 1px solid darkslategrey;
-  box-shadow: 2px 2px 2px #DCDCDC;
+	background-image: url('../assets/CardBack.png');
+}
+
+.question {
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 24px;
+	padding-top: 30px;
 }
 
 .c-title {
