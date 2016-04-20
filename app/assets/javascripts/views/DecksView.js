@@ -32,6 +32,7 @@ app.DecksView = Backbone.View.extend({
       $tagSpan.attr('data-tagName', tag);
       $tagSpan.addClass('tagSpan');
       $tagsDiv.append($tagSpan);
+      $tagsDiv.append('<span class="x">x</span>');
     });
 
     _.each( $('.tagSpan'), function(tagItem) {
