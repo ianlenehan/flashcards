@@ -13,9 +13,12 @@ app.AppRouter = Backbone.Router.extend({
   finishGame: function() {
     var gameState = app.basil.get("gameState");
     var rawScore = this.calculateRawScore(gameState);
+    gameState.rawScore = rawScore;
     var percentScore = this.calculatePercentScore(gameState);
+    gameState.percentScore = percentScore;
     var deckId = gameState.currentDeckId;
-    app.basil.remove("gameState");
+    var totalCards = gameState.gameDetails.length;
+    app.basil.set("gameState", gameState);
     var score = new app.Score();
     app.currentUser.fetch().done(function() {
       score.set({ score: {
@@ -26,8 +29,14 @@ app.AppRouter = Backbone.Router.extend({
         }
       });
       score.save();
-
     });
+
+
+    var gameCompleteView = new app.GameCompleteView();
+
+    gameCompleteView.render();
+
+    app.basil.remove("gameState");
     app.gameState = undefined;
 
     // TODO: Add score to lifetime_score for the user
