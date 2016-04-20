@@ -19,6 +19,8 @@
   <strong>Lifetime score:</strong>
   <%= @user.lifetime_score %>
 </p>
-
-<%= link_to '<<', users_path %>
+<p><a href="/#user/18/mydecks">My Decks</a></p>
+<% if @current_user.present? && @current_user.admin %>
+<%= link_to 'All Users', users_path %>
+<% end %>
 </div>
