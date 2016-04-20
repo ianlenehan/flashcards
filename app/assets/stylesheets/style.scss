@@ -273,6 +273,14 @@ li:hover {
   padding-top: 20px;
 }
 
+#gameSummary {
+  min-height: 50vh;
+  width: 50vw;
+  background-image: url("../assets/CardFront.png");
+  border-radius: 10px;
+  margin: 100px auto;
+  box-shadow: 0px 2px 12px #DCDCDC;
+}
 
 button, .actions > input, .uploads > input {
   border: none !important;
