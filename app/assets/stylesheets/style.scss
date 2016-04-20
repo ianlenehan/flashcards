@@ -73,31 +73,36 @@ img.profile {
 
 #tagList {
   height: 100%;
-  width: 200px;
-  border-radius: 10px;
+  width: 100px;
   position: absolute;
-  right: 20vw;
+  right: 17vw;
   top: 0px;
-  background-color: gainsboro;
-  padding: 100px 20px 100px 20px;
+  background-color: $brand-color-light;
+  padding: 70px 10px 40px 10px;
 }
 
 .tagItem {
   width: 100%;
-  height: 30px;
-  padding: 5px;
+  height: 20px;
+  padding: 2px;
   border-radius: 4px;
   text-align: left;
-  background-color: lightBlue;
+  background-color: white;
   margin-top: 10px;
   cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+}
+
+.tagItem:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #sidebar {
   position: fixed;
   display: inline-block;
   height: 100vh;
-  width: 20vw;
+  width: 17vw;
   top: 0;
   right: 0;
   background-color: rgb(240, 240, 240);
@@ -106,7 +111,7 @@ img.profile {
 }
 
 #user-name {
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   font-family: 'Martel Sans', sans-serif;
   padding-top: 10px;
@@ -117,10 +122,14 @@ img.profile {
   width: 150px;
   margin: 50px auto;
   z-index: 100000;
+  text-align: center;
   img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.55);
+    border: 3px solid white;
   }
 }
 
@@ -133,26 +142,48 @@ img.profile {
 
 #categoryList {
   margin: 0 auto;
-  width: 80%;
+  width: 800px;
 }
 
 
 .tagSpan {
   display: inline-block;
   padding: 5px 20px 5px 20px;
-  background-color: #cedde2;
+  background-color: $secondary-color;
+  color: white;
   border-radius: 3px;
   margin: 10px;
 }
 
+.tagSpan:hover {
+  background-color: $secondary-color-light;
+  // cursor: pointer;
+}
+
+.x {
+  font-size: 8px;
+  position: relative;
+  right: 19px;
+  top: -2px;
+}
+
 .category, .deck {
   width: 200px;
-  height: 300px;
-  border: 1px solid black;
+  height: 200px;
+  background: -webkit-gradient(radial, center center, 50, center center, 300, from(#ffffff), to($secondary-color-light));
   flex-basis: 30%;
   margin: 10px;
   text-align: center;
   border-radius: 10px;
+  box-shadow: 0px 2px 12px #DCDCDC;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.category:hover, .deck:hover {
+  background: -webkit-gradient(radial, center center, 50, center center, 300, from(#ffffff), to($secondary-color));
 }
 
 h2 {
@@ -242,15 +273,24 @@ li:hover {
   padding-top: 20px;
 }
 
+#gameSummary {
+  min-height: 50vh;
+  width: 50vw;
+  background-image: url("../assets/CardFront.png");
+  border-radius: 10px;
+  margin: 100px auto;
+  box-shadow: 0px 2px 12px #DCDCDC;
+}
 
-button {
+button, .actions > input, .uploads > input {
   border: none !important;
   background: $secondary-color-light !important;
   border-radius: 3px;
   padding: 5px !important;
 }
 
-button:hover {
+
+button:hover, .actions > input:hover, .uploads > input:hover {
   background: $secondary-color !important;
 }
 
@@ -274,5 +314,13 @@ hr {
   li {
     display: inline-block;
     padding: 8px;
+  }
+}
+
+#filter-buttons {
+  text-align: center;
+  button {
+    margin: 5px;
+    width: 140px;
   }
 }
