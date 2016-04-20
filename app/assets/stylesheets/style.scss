@@ -46,14 +46,14 @@ img.profile {
 }
 
 #tagList {
-  min-height: 80vh;
+  height: 100%;
   width: 200px;
   border-radius: 10px;
   position: absolute;
-  right: 25vw;
-  top: 100px;
+  right: 20vw;
+  top: 0px;
   background-color: gainsboro;
-  padding: 20px;
+  padding: 100px 20px 100px 20px;
 }
 
 .tagItem {
@@ -86,16 +86,6 @@ img.profile {
   padding-top: 10px;
 }
 
-.popUp {
-  width: 400px;
-  height: 300px;
-  border: 5px solid black;
-  background-color: white;
-  margin: 0 auto;
-  text-align: center;
-  position: absolute;
-  z-index: 100;
-}
 
 #profilePicture {
   width: 150px;
@@ -118,6 +108,15 @@ img.profile {
 #categoryList {
   margin: 0 auto;
   width: 80%;
+}
+
+
+.tagSpan {
+  display: inline-block;
+  padding: 5px 20px 5px 20px;
+  background-color: #cedde2;
+  border-radius: 3px;
+  margin: 10px;
 }
 
 .category, .deck {
