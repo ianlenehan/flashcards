@@ -80,14 +80,19 @@ mango = Card.create(question: 'What is the spanish word for "mango"?', answer: '
 lemon = Card.create(question: 'What is the spanish word for "lemon"?', answer: 'limon')
 grapes = Card.create(question: 'What is the spanish word for "grapes"?', answer: 'uvas')
 
+# CARDS FOR JS Variables
+sillycard = Card.create(question: 'What is a variable?', answer: 'yes')
+
 #### ------------- ASSIGNING SPANISH FOOD CARDS TO SPANISH_FOOD DECK ------------ ####
 
 spanish_food.cards << melon << strawberry << pear << banana << apple << mango << lemon << grapes
 
+js_variables.cards << sillycard
+
 #### ------------- ASSIGNING CARDS TO USERS ------------ ####
 emily.cards << melon << strawberry << pear << banana << apple << mango << lemon << grapes
 
-
+harrison.cards << sillycard
 #### ------------- ASSIGNING DECKS TO CATEGORIES ------------ ####
 
 spanish.decks << spanish_101 << spanish_food << spanish_getting_around

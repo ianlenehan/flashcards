@@ -1,91 +1,39 @@
 var app = app || {};
 
 app.GameCompleteView = Backbone.View.extend({
-
-  el: '#',
-
-  events: {
-    'click #submit-answer': 'checkAnswer',
-    'click #next-card': 'getNextCard',
-    'click #finish-game': 'finishGame'
-  },
+  el: '#primaryContent',
 
   render: function() {
+
     this.$el.empty();
+
+    var gameCompleteTemplate = $('#gameCompleteTemplate').html();
+    this.$el.append(gameCompleteTemplate);
+
+    // Pull out the gamesState one last time
     var gameState = app.basil.get("gameState");
-    var currentCardIndex = gameState.currentCardIndex;
-    var currentDeck = gameState.currentDeck;
-    var gameDetails = gameState.gameDetails;
 
-    // Stores the actual card object for the template, ie. question, answer etc
-    var cardToPlay = gameDetails[currentCardIndex];
+    $('#pageTitle').text('Game Summary!');
+    $('#rawScore').text('You scored: ' + gameState.rawScore + ' / ' + gameState.gameDetails.length);
+    $('#percentScore').text("That's " + gameState.percentScore + "%");
 
-    var playCardTemplate = $('#playCardTemplate').html();
-    var playCardHTML = _.template(playCardTemplate);
-    this.$el.html( playCardHTML(cardToPlay) );
-    this.$el.addClass('animated rollIn');
+    currentUser = new app.CurrentUser();
+    currentUser.fetch().done( function() {
+      var toMyFavourites = '#user/' + currentUser.id + '/favourites';
+      var backToFavouritesLink = $('<a>').attr('href', toMyFavourites ).text('Back to My Favourites');
+      $('#actions').html(backToFavouritesLink);
+    } );
 
-
-  },
-
-  checkAnswer: function() {
-    $('#submit-answer').hide();
-    $('#input-answer').hide();
-    $('.play-flipper').addClass('toggle-flip');
-
-    var gameState = app.basil.get("gameState");
-    var currentCard = gameState.gameDetails[gameState.currentCardIndex];
-    var userAnswer = $('#input-answer').val().trim();
-    currentCard.userAnswer = userAnswer;
-
-    var correctAnswer = currentCard.answer;
-
-
-    var editDistance = window.Levenshtein.get(userAnswer.toLowerCase(), correctAnswer.toLowerCase());
-
-    if (editDistance === 0) {
-      // Correct
-      currentCard.correct = true;
-      setTimeout(function(){
-        $('.correct').removeClass('hidden').addClass('animated fadeInDown');
-      }, 800);
-
-
-
-
-    } else {
-      // Incorrect
-      currentCard.correct = false;
-      setTimeout(function(){
-        $('.incorrect').removeClass('hidden').addClass('animated fadeInDown');
-      }, 800);
-
-    }
-     if (gameState.currentCardIndex === gameState.gameDetails.length - 1) {
-       this.$el.append('<button id="finish-game">Finish Game</button>');
-       app.basil.set("gameState", gameState);
-     } else {
-       this.$el.append('<button id="next-card">Next Card</button>');
-       gameState.currentCardIndex += 1;
-       app.basil.set("gameState", gameState);
-     }
-
-
-  },
-
-  getNextCard: function() {
-    this.$el.removeClass('animated rollIn');
-    this.$el.addClass('animated zoomOutRight');
-
-    setTimeout(function(){
-      $('#playCard').removeClass('animated zoomOutRight');
-      app.playCardView.render();
-    }, 500);
-
-  },
-
-  finishGame: function() {
-    app.router.navigate('/finish', true);
   }
 
 });
+
+// <script id="gameCompleteTemplate "type="text/template">
+//   <h1 id="pageTitle"></h1>
+//   <div id="gameResults">
+//     <h3 id="rawScore"></h3>
+//     <h3 id="percentScore"></h3>
+//   </div>
+//   <div id="actions">
+//   </div>
+// </script>
