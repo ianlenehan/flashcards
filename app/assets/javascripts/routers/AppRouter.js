@@ -36,9 +36,6 @@ app.AppRouter = Backbone.Router.extend({
 
     gameCompleteView.render();
 
-    app.basil.remove("gameState");
-    app.gameState = undefined;
-
     // TODO: Add score to lifetime_score for the user
   },
 
