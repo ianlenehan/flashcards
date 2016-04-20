@@ -7,10 +7,15 @@ app.TagsView = Backbone.View.extend({
 
   },
   render: function() {
+    $('#tagList').remove();
     tagsTemplate = $('#tagsTemplate').html();
     $('#primaryContent').append(tagsTemplate);
     console.log("tags view render called");
-    _.each(this.collection, function(tag) {
+
+    
+    var inactiveTags = _.difference(app.tagsView.collection, app.activeTags);
+
+    _.each(inactiveTags, function(tag) {
       var $tagDiv = $('<div>');
       $tagDiv.addClass('tagItem');
       $tagDiv.text(tag);
@@ -20,7 +25,7 @@ app.TagsView = Backbone.View.extend({
     app.categoryDecks = app.decks.where({
       category_id: app.cat_id
     });
-    
+
     this.renderWithFilter();
   },
 
