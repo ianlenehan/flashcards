@@ -22,7 +22,7 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @deck = Deck.find(flash[:deck_id])
-
+    flash.keep
   end
 
   # POST /cards
@@ -47,9 +47,11 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
+    @deck = Deck.find(flash[:deck_id])
+
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.html { redirect_to @deck, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
