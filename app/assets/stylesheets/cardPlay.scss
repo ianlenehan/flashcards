@@ -50,14 +50,6 @@
 	position: relative;
 }
 
-/* hide back of pane during swap */
-.play-front, .play-back {
-	backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
 .play-card-contents{
 	box-sizing: border-box;
 	padding: 10px;
@@ -69,11 +61,9 @@
 	display: inline-block;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
-  background-color: cream;
+  background-image: url('../assets/CardFront.png');
   border-radius: 20px;
   text-align: center;
-  border: 1px solid darkslategrey;
-	box-shadow: 2px 2px 2px #DCDCDC;
 }
 
 /* back, initially hidden pane */
@@ -81,11 +71,9 @@
 
 	display: inline-block;
 	transform: rotateY(180deg);
-  background-color: cream;
+  background-image: url('../assets/CardBack.png');
   border-radius: 20px;
   text-align: center;
-  border: 1px solid darkslategrey;
-  box-shadow: 2px 2px 2px #DCDCDC;
 }
 
 .play-c-title {

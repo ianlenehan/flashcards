@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: 'Martel Sans', sans-serif !important;
 }
 
 #primaryContent {
@@ -7,6 +8,7 @@ body {
   display:inline-block;
   width: 80vw;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 #deckList {
@@ -34,8 +36,12 @@ img.profile {
   background-color: #3FD7F3;
   border: none;
   border-radius: 0;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
   * {
-    color: white;
+    color: white !important;
   }
 }
 
@@ -68,8 +74,16 @@ img.profile {
   width: 20vw;
   top: 0;
   right: 0;
-  background-color: #FFB268;
+  background-color: rgb(240, 240, 240);
   z-index: 10;
+  align-items: center;
+}
+
+#user-name {
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Martel Sans', sans-serif;
+  padding-top: 10px;
 }
 
 .popUp {
@@ -85,7 +99,7 @@ img.profile {
 
 #profilePicture {
   width: 150px;
-  margin: 100px auto;
+  margin: 50px auto;
   z-index: 100000;
   img {
     width: 150px;
@@ -103,7 +117,7 @@ img.profile {
 
 #categoryList {
   margin: 0 auto;
-  width: 50vw
+  width: 80%;
 }
 
 .category, .deck {
@@ -153,27 +167,36 @@ h2 {
   // text-align: center;
   border-radius: 8px;
   box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5);
+  li {
+    margin-left: -35px;
+  }
 }
 
 #close-dialog {
   width: 30px;
   position: relative;
   top: -30px;
-  left: 344px;
+  left: 311px;
 }
 
-.deck-input {
+.deck-input, #add-label {
   width: 300px;
   margin: 0 auto;
+  text-align: left;
+  padding-left: 5px;
 }
 
 ul.ui-front {
   list-style: none;
-  margin-left: -20px;
-  left: -25px;
-  position: relative;
-  background-color: gainsboro;
+  background-color: rgb(240, 240, 240);
   border-radius: 0 0 5px 5px;
+  width: 300px;
+  padding-bottom: 5px;
+}
+
+li:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .ui-helper-hidden-accessible {
@@ -184,4 +207,13 @@ ul.ui-front {
 
 #user-selection {
   padding-top: 20px;
+}
+
+.buttons {
+  border: 1px solid #FF9C3E;
+  background: #FFCC9B;
+}
+
+.buttons:hover {
+  background: #FFB268;
 }
