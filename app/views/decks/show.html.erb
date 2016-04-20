@@ -1,40 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Deck Name:</strong>
-  <%= @deck.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">  <%= @deck.name %> </h3> <span><%= link_to 'Edit Deck', edit_deck_path(@deck) %></span>
 
-<p>
-  <strong>Deck Owner:</strong>
-  <%= @deck.user.name_first %>
-  <%= @deck.user.name_last %>
-</p>
+  </div>
+  <div class="panel-body">
+    Owner: <%= @deck.user.name_first %> <%= @deck.user.name_last %>
+  </div>
+</div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"> Cards:</h3> <%= link_to 'Add a card', new_card_path %>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped" style="width:50%">
+      <thead>
+        <tr>
+          <th><strong>Question</strong></th>
+          <th><strong>Answer</strong></th>
+          <th><strong>Actions</strong></th>
 
-
-  <strong>Cards:</strong>
-  <p>
+        </tr>
+      </thead>
+<tbody>
   <% @deck.cards.each do |card| %>
-<table>
+
   <tr>
-    <th>
-      <strong>Question:</strong>
-    </th>
     <td><%= card.question %></td>
-  </tr>
-  <tr>
-    <th>
-      <strong>Answer:</strong>
-    </th>
     <td><%= card.answer %></td>
+    <td><%= link_to 'Edit', edit_card_path(card) %>
+      <%= link_to 'Remove', card_remove_path(card), method: :post %>
+</td>
+
   </tr>
-</table>
 
 <% end %>
-</p>
+</tbody>
+</table>
+  </div>
+</div>
 
 
 
-<%= link_to 'Edit', edit_deck_path(@deck) %> |
-<%= link_to 'Back', decks_path %>
+
+
+
+<%= link_to 'Back to Decks', decks_path %>
