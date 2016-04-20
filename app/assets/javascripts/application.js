@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chartsjs.min.js
 //= require underscore.js
 //= require backbone.js
 //= require moment.js
