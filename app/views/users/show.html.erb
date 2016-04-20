@@ -1,26 +1,59 @@
 <p id="notice"><%= notice %></p>
 
+<div id="profile">
+  <p>
+    <img class="profile" src="<%= @user.photo  %>"/>
+  </p>
+  <p>
+    <%= @user.name_first %>
+    <%= @user.name_last %>
+    <%= link_to 'Edit', edit_user_path(@user) %>
 
-<div id="profile"><p>
-<img class="profile" src="<%= @user.photo  %>" />
-</p>
-<p>
-  <%= @user.name_first %>
-  <%= @user.name_last %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
+  </p>
 
-</p>
+  <p>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Lifetime score:</strong>
+    <%= @user.lifetime_score %>
+  </p>
 
-<p>
-  <strong>Lifetime score:</strong>
-  <%= @user.lifetime_score %>
-</p>
-<p><a href="/#user/18/mydecks">My Decks</a></p>
-<% if @current_user.present? && @current_user.admin %>
-<%= link_to 'All Users', users_path %>
-<% end %>
+  <% if @current_user.present? && @current_user.admin %>
+  <%= link_to 'All Users', users_path %>
+  <% end %>
+  <hr>
+</div> <!-- main div profile -->
+<div class="generic-container">
+  <h3>My Decks</h3>
+  <ul id="my-decks-list">
+    <% @myDecks.each do |deck| %>
+    <li class="my-deck-name" data-id="<%= deck.id %>"></li><%= deck.name %>
+    <% end %>
+  </ul>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      My Scores
+    </div>
+    <div class="panel-body score-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><%= link_to 'Deck', :sort => 'deck_id' %></th>
+            <th class="t-center"><%= link_to 'Score', :sort => 'score' %></th>
+            <th><%= link_to 'Date', :sort => 'created_at' %></th>
+          </tr>
+        </thead>
+      </th>
+      <% @myScores.each do |score| %>
+      <tr>
+        <td><%= score.deck.name %></td>
+        <td class="t-center"><%= score.score %></td>
+        <td><%= score.created_at.strftime '%e/%m/%y' %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 </div>
