@@ -25,7 +25,7 @@ app.DecksView = Backbone.View.extend({
         word = " favourites";
       }
 
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"> (' + newCount + word + ')</span></div>');
+      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"><img src="assets/favStar.png"> (' + newCount + ')</span></div>');
     });
   },
 
