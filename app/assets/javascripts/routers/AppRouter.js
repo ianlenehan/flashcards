@@ -57,7 +57,6 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   showDeck: function(id, deckId) {
-    console.log("Show Deck called");
     var appView = new app.AppView();
     appView.render();
     app.deck_id = parseInt(deckId);
@@ -73,7 +72,6 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   showDecks: function(id) {
-    console.log("Show decks caled");
     var appView = new app.AppView();
     app.activeTags = [];
     appView.render();
@@ -90,7 +88,6 @@ app.AppRouter = Backbone.Router.extend({
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
-
         var tags = [];
         _.each(matchingDecks, function(deck) {
           tags.push(deck.attributes.tags);
@@ -101,7 +98,14 @@ app.AppRouter = Backbone.Router.extend({
           collection: matchingDecks,
           model: category
         });
-        app.decksView.render();
+
+        app.newFavourites = new app.Favourites();
+        app.newFavourites.fetch().done( function () {
+          app.favArray = app.newFavourites.pluck('deck_id');
+          app.decksView.render();
+        });
+
+
 
 
 
