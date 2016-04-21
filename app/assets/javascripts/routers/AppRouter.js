@@ -28,7 +28,10 @@ app.AppRouter = Backbone.Router.extend({
           percent_score: percentScore
         }
       });
-      score.save();
+      score.save().done(function() {
+
+        app.sidebarView.render();
+      });
     });
 
 
