@@ -7,6 +7,28 @@ app.DecksView = Backbone.View.extend({
     'click .deck': 'showDeck'
   },
 
+  renderLoop: function () {
+    _.each(this.collection, function (deck) {
+      var count = _.countBy(app.favArray, function (id) {
+        return id === deck.attributes.id;
+      });
+      var newCount = 0;
+      var word = ' favourites';
+      if (count.true === undefined) {
+        newCount = 0;
+      } else {
+        newCount = count.true;
+      }
+      if (newCount === 1 ) {
+        word = " favourite";
+      } else {
+        word = " favourites";
+      }
+
+      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"> (' + newCount + word + ')</span></div>');
+    });
+  },
+
   showDeck: function(e) {
     var deckId = (e.currentTarget.dataset.deckid);
     app.router.navigate('/category/'+app.categoryId +'/'+ deckId, true);
@@ -14,16 +36,12 @@ app.DecksView = Backbone.View.extend({
 
   render: function() {
     this.$el.empty();
-    console.log(app.favArray);
     $('#categoryList').remove();
     app.categoryName = this.model.attributes.name;
     app.categoryId = this.model.attributes.id;
     this.$el.append('<h2>'+app.categoryName+' Decks </h2>');
     $('.activeTagsContainer').remove();
     this.$el.append('<div class="activeTagsContainer"></div>');
-
-
-
 
     _.each(app.activeTags, function(tag){
       $tagsDiv = $('.activeTagsContainer');
@@ -40,9 +58,9 @@ app.DecksView = Backbone.View.extend({
       $(tagItem).on('click', function(event) {
 
         app.activeTags = _.filter(app.activeTags, function(tag) {
-          console.log($(event.target).text());
           return tag !== $(event.target).text();
         });
+
         app.tagsView.render();
       });
     });
@@ -50,11 +68,7 @@ app.DecksView = Backbone.View.extend({
 
     this.$el.append('<div id="decks"></div>');
 
-    _.each(this.collection, function (deck) {
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<p>Owned by '+ deck.attributes.user.name_first+' '+deck.attributes.user.name_last+'</p></div>');
-    });
-
-
+    this.renderLoop();
 
   },
 
@@ -68,9 +82,7 @@ app.DecksView = Backbone.View.extend({
     that.$el.append("<h2>" + app.name_first + " " + app.name_last + "'s Decks</h2>");
     that.$el.append('<div id="decks"></div>');
 
-    _.each(that.collection, function (deck) {
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '</div>');
-    });
+    that.renderLoop();
     });
 
   }
