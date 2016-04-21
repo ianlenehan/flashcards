@@ -2,11 +2,15 @@ $brand-color: #3FD7F3;
 $brand-color-light: #9AEAF9;
 $secondary-color: #FFB268;
 $secondary-color-light: #FFCC9B;
+
 body {
   margin: 0;
   font-family: 'Martel Sans', sans-serif !important;
   padding-top: 50px;
+  background-image: image-url('bg.png');
+  background-size: auto;
 }
+
 .panel {
   max-width: 50vw;
   margin: 20px auto;
@@ -295,20 +299,19 @@ li:hover {
   margin: 100px auto;
   box-shadow: 0 2px 12px #DCDCDC;
 }
-.actions > input,
-.uploads > input,
+// .actions > input,
+// .uploads > input,
 
-button, .actions > input, .uploads > input {
+button, .actions > input, .upload > button {
   border: none !important;
   background: $secondary-color-light !important;
   border-radius: 3px;
   padding: 5px !important;
 }
-.actions > input:hover,
-.uploads > input:hover,
-button:hover {
+.actions > input:hover, .upload > button:hover, button:hover {
   background: $secondary-color !important;
 }
+
 .t-center {
   text-align: center !important;
 }
@@ -357,6 +360,34 @@ hr {
 .activeTagsContainer:hover {
   cursor: pointer;
 }
+
+#home-container {
+  width: 65%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px gainsboro;
+  padding: 25px;
+  height: 100%;
+  margin-top: 40px;
+  h1 {
+    text-align: center;
+  }
+}
+
+#home-text {
+  width: 60%;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#home-img {
+  width: 30%;
+  display: inline-block;
+  align-items: right;
+  img {
+    width: 100%;
+  }
 
 #lifetimeScore {
   font-size: 40px;
