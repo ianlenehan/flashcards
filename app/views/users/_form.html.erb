@@ -1,3 +1,4 @@
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,31 +12,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :First_name %><br>
-    <%= f.text_field :name_first %>
-  </div>
-  <div class="field">
-    <%= f.label :Last_name %><br>
-    <%= f.text_field :name_last %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <span class="upload"><%= f.file_field :photo %></span>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+<div class="form-group">
+  <%= f.label :First_name %><br>
+  <%= f.text_field :name_first, class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :Last_name %><br>
+  <%= f.text_field :name_last, class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :email %><br>
+  <%= f.text_field :email, class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :password %><br>
+  <%= f.password_field :password, class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation, class:"form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :photo %><br>
+  <span class="upload"><%= f.file_field :photo %></span>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
 <% end %>
