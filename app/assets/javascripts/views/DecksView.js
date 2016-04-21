@@ -57,9 +57,9 @@ app.DecksView = Backbone.View.extend({
     _.each( $('.tagSpan'), function(tagItem) {
 
       $(tagItem).on('click', function(event) {
-
+        console.log("click event fired");
         app.activeTags = _.filter(app.activeTags, function(tag) {
-          return tag !== $(event.target).text();
+          return tag !== $(event.target).parent().text();
         });
 
         app.tagsView.render();
