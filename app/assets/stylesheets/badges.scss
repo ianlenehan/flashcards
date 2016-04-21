@@ -4,6 +4,20 @@
   right: 31px;
 }
 
+.inline {
+  display: inline-block;
+}
+
+// on the profile page
+.badge-container {
+  width: 500px;
+  margin: 0 auto;
+  h3 {
+    text-align: center;
+  }
+  text-align: center;
+}
+
 .youngScholar {
   background: url('badges.png') no-repeat -119px -119px;
   width: 84px;

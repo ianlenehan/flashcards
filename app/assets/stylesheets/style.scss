@@ -39,6 +39,8 @@ body {
   margin: 0 auto;
 }
 
+
+
 #deckList {
   text-align: center;
 }
@@ -79,10 +81,20 @@ img.profile {
   a {
     color: white !important;
   };
-  .dropdown-menu a {
-    color: grey !important;
+  .dropdown-menu {
+    background-color: $brand-color;
+    border: 1px solid $brand-color-light;
+    a {
+      color: white;
+    }
+    a:hover {
+      background-color: $brand-color-light;
+    }
   }
-  .dropdown-menu a:hover {
+  .dropdown a:focus {
+    background-color: $brand-color-light;
+  }
+  .dropdown-menu > .nav .open > a, .nav .open > a:hover, .nav .open > a:focus, .nav .open > a:active, .nav .open > a:visited {
     background-color: $brand-color-light;
   }
 }
@@ -225,12 +237,22 @@ h2 {
 }
 
 #gameSummary {
+  background-color: white;
   min-height: 50vh;
   width: 50vw;
-  border: 3px solid black;
   border-radius: 10px;
   margin: 100px auto;
+  box-shadow: 0px 2px 12px #DCDCDC;
+  padding: 10px;
 }
+
+#scoresGraph {
+  width: 500px;
+  height: 300px;
+}
+
+
+
 
 .overlay {
   display: none;
@@ -296,15 +318,6 @@ li:hover {
 
 #user-selection {
   padding-top: 20px;
-}
-
-#gameSummary {
-  min-height: 50vh;
-  width: 50vw;
-  background-image: image-url("CardFront.png");
-  border-radius: 10px;
-  margin: 100px auto;
-  box-shadow: 0px 2px 12px #DCDCDC;
 }
 
 button, .actions > input, .uploads > input {
