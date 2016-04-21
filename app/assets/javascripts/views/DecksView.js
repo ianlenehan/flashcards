@@ -8,23 +8,28 @@ app.DecksView = Backbone.View.extend({
   },
 
   renderLoop: function () {
+
+if (this.collection.length === 0) {
+  $('#decks').append("<p class='italic'> It doesn't look like there are any decks for this cateogory yet. Why don't you create one?</p>");
+
+}
     _.each(this.collection, function (deck) {
 
       var count = _.countBy(app.favArray, function (id) {
         return id === deck.attributes.id;
       });
       var newCount = 0;
-      var word = ' favourites';
+      // var word = ' favourites';
       if (count.true === undefined) {
         newCount = 0;
       } else {
         newCount = count.true;
       }
-      if (newCount === 1 ) {
-        word = " favourite";
-      } else {
-        word = " favourites";
-      }
+      // if (newCount === 1 ) {
+      //   word = " favourite";
+      // } else {
+      //   word = " favourites";
+      // }
 
       $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"><img src="assets/favStar.png"> (' + newCount + ')</span><br><div class="created-by num-favs">Created by: ' + deck.attributes.user.name_first + " " + deck.attributes.user.name_last + '</div></div>');
     });
