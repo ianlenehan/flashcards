@@ -2,23 +2,18 @@ $brand-color: #3FD7F3;
 $brand-color-light: #9AEAF9;
 $secondary-color: #FFB268;
 $secondary-color-light: #FFCC9B;
-
 body {
   margin: 0;
   font-family: 'Martel Sans', sans-serif !important;
   padding-top: 50px;
 }
-
 .panel {
   max-width: 50vw;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
   h3 {
     display: inline;
   }
 }
-
 .deck {
   position: relative;
   p {
@@ -28,34 +23,27 @@ body {
     font-size: 80%;
     color: #DEDEDE;
     margin-left: 10px;
-
   }
 }
-
 #primaryContent {
   text-align: center;
-  display:inline-block;
+  display: inline-block;
   width: 80vw;
   margin: 0 auto;
 }
 
-
-
 #deckList {
   text-align: center;
 }
-
 .deck {
-    display: inline-block;
-    width: 100px;
+  display: inline-block;
+  width: 100px;
 }
-
 #profile {
   width: 500px;
   margin: 0 auto;
   text-align: center;
 }
-
 .generic-container {
   width: 500px;
   margin: 0 auto;
@@ -63,12 +51,10 @@ body {
     text-align: center;
   }
 }
-
 img.profile {
   width: 200px;
-  border-radius: 50%
+  border-radius: 50%;
 }
-
 .navbar {
   z-index: 9999999999;
   background-color: $brand-color;
@@ -99,24 +85,28 @@ img.profile {
   }
 }
 
+ul.dropdown-menu {
+  background-color: $brand-color;
+}
 
+.dropdown.open,
+a.dropdown-toggle:hover {
+  background-color: $brand-color-light !important;
+}
 
 a.dropdown-toggle:hover, .dropdown.open {
     background-color: $brand-color-light !important;
   }
-
-
 
 #tagList {
   height: 100%;
   width: 100px;
   position: absolute;
   right: 17vw;
-  top: 0px;
+  top: 0;
   background-color: $brand-color-light;
-  padding: 70px 10px 40px 10px;
+  padding: 70px 10px 40px;
 }
-
 .tagItem {
   width: 100%;
   height: 20px;
@@ -129,11 +119,9 @@ a.dropdown-toggle:hover, .dropdown.open {
   font-size: 10px;
   text-align: center;
 }
-
 .tagItem:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
-
 #sidebar {
   position: fixed;
   display: inline-block;
@@ -145,18 +133,16 @@ a.dropdown-toggle:hover, .dropdown.open {
   z-index: 10;
   align-items: center;
 }
-
 #user-name {
   font-size: 18px;
   text-align: center;
   font-family: 'Martel Sans', sans-serif;
   padding-top: 10px;
+  margin-bottom: 23px;
 }
-
-
 #profilePicture {
   width: 150px;
-  margin: 50px auto;
+  margin: 78px auto 10px auto;
   z-index: 100000;
   text-align: center;
   border-radius: 50%;
@@ -164,47 +150,41 @@ a.dropdown-toggle:hover, .dropdown.open {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.55);
+    margin-bottom: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
     border: 3px solid white;
   }
 }
-
-#categories{
+#categories {
   width: 800px;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
 }
-
 #categoryList {
   margin: 0 auto;
   width: 800px;
 }
-
-
 .tagSpan {
   display: inline-block;
-  padding: 5px 20px 5px 20px;
+  padding: 5px 20px;
   background-color: $secondary-color;
   color: white;
   border-radius: 3px;
   margin: 10px;
 }
-
 .tagSpan:hover {
   background-color: $secondary-color-light;
   // cursor: pointer;
 }
-
 .x {
   font-size: 8px;
   position: relative;
   right: 19px;
   top: -2px;
 }
-
-.category, .deck {
+.category,
+.deck {
   width: 200px;
   height: 200px;
   background: -webkit-gradient(radial, center center, 50, center center, 300, from(#ffffff), to($secondary-color-light));
@@ -212,30 +192,26 @@ a.dropdown-toggle:hover, .dropdown.open {
   margin: 10px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 0px 2px 12px #DCDCDC;
+  box-shadow: 0 2px 12px #DCDCDC;
   font-size: 18px;
   color: rgba(0, 0, 0, 0.7);
   padding-top: 80px;
   overflow: hidden;
 }
-
-.category:hover, .deck:hover {
+.category:hover,
+.deck:hover {
   background: -webkit-gradient(radial, center center, 50, center center, 300, from(#ffffff), to($secondary-color));
 }
-
 h2 {
   display: block;
 }
-
 #user-id {
   display: none;
 }
-
 #fav {
   width: 25px;
   margin: 0 0 6px 10px;
 }
-
 #gameSummary {
   background-color: white;
   min-height: 50vh;
@@ -251,23 +227,19 @@ h2 {
   height: 300px;
 }
 
-
-
-
 .overlay {
   display: none;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 100;
 }
-
 .dialog {
   transform: translate(-50%, -50%);
-  position:absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   background-color: white;
@@ -277,26 +249,25 @@ h2 {
   align-items: center;
   // text-align: center;
   border-radius: 8px;
-  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
   li {
     margin-left: -35px;
   }
 }
-
 #close-dialog {
   width: 30px;
   position: absolute;
   top: -9px;
-  right: -11px;;
+  right: -11px;
 }
 
-.deck-input, #add-label {
+#add-label,
+.deck-input {
   width: 95%;
   margin: 0 auto;
   text-align: left;
   padding-left: 5px;
 }
-
 ul.ui-front {
   list-style: none;
   background-color: rgb(240, 240, 240);
@@ -304,21 +275,29 @@ ul.ui-front {
   width: 95%;
   padding-bottom: 5px;
 }
-
 li:hover {
   font-weight: bold;
   cursor: pointer;
 }
-
 .ui-helper-hidden-accessible {
   div {
     display: none;
   }
 }
-
 #user-selection {
   padding-top: 20px;
 }
+
+#gameSummary {
+  min-height: 50vh;
+  width: 50vw;
+  background-image: image-url("CardFront.png");
+  border-radius: 10px;
+  margin: 100px auto;
+  box-shadow: 0 2px 12px #DCDCDC;
+}
+.actions > input,
+.uploads > input,
 
 button, .actions > input, .uploads > input {
   border: none !important;
@@ -326,31 +305,21 @@ button, .actions > input, .uploads > input {
   border-radius: 3px;
   padding: 5px !important;
 }
-
-
-button:hover, .actions > input:hover, .uploads > input:hover {
+.actions > input:hover,
+.uploads > input:hover,
+button:hover {
   background: $secondary-color !important;
 }
-
-
-
-
-
-
-
 .t-center {
   text-align: center !important;
 }
-
 .score-table {
   max-height: 300px !important;
   overflow: scroll !important;
 }
-
 hr {
   border-color: $secondary-color !important;
 }
-
 #my-decks-list {
   list-style: none;
   text-align: center;
@@ -360,11 +329,44 @@ hr {
     padding: 8px;
   }
 }
-
 #filter-buttons {
   text-align: center;
   button {
     margin: 5px;
     width: 140px;
   }
+}
+
+.num-favs {
+  font-size: 9px;
+  color: gainsboro;
+  display: inline-block;
+  img {
+    width: 10px;
+    display: inline-block;
+    position: relative;
+    top: -1px;
+  }
+}
+
+.activeTagsContainer {
+  span {
+    color: white;
+  }
+}
+
+.activeTagsContainer:hover {
+  cursor: pointer;
+}
+
+#lifetimeScore {
+  font-size: 40px;
+  color: #3FD7F3;
+  margin-bottom: 30px;
+
+}
+
+#scoreHeader {
+  font-size: 16px;
+  margin-bottom: 0;
 }
