@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def home
+    @users = User.all
+    @users_sorted = @users.sort_by{|user| user.lifetime_score}.reverse
   end
 
   # GET /categories
