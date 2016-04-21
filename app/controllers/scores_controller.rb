@@ -29,9 +29,11 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
     @score = Score.new(score_params)
+    @current_user.lifetime_score += params[:score][:score].to_i
 
     respond_to do |format|
-      if @score.save
+      if @score.save && @current_user.save
+
         format.html { redirect_to @score, notice: 'Score was successfully created.' }
         format.json { render :show, status: :created, location: @score }
       else
