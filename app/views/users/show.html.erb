@@ -51,8 +51,11 @@
   <% if @user.lifetime_score >= 3000 %>
   <div class="ninja inline"></div>
   <% end %>
+  <% if @user.lifetime_score < 3000 %>
   <p class="italic"> Earn more badges by scoring points on decks!<p>
-
+  <% else %>
+  <p class="italic"> You've earned all the badges! You are a true ninja!<p>
+  <% end %>
   <hr>
 </div> <!-- main div profile -->
 <div class="generic-container">
@@ -73,34 +76,33 @@
 
 
   <div class="panel panel-default">
-    <div class="panel-heading">
-      Recent Scores
-    </div>
-
-
-    <div class="panel-body score-table">
-      <% if @myScores.length == 0 %>
-      <p>You don't seem to have any scores yet, play a deck to get started!</p>
-      <% else %>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th><%= link_to 'Deck', :sort => 'deck_id' %></th>
-            <th class="t-center"><%= link_to 'Score', :sort => 'score' %></th>
-            <th><%= link_to 'Date', :sort => 'created_at' %></th>
-          </tr>
-        </thead>
-      </th>
-      <% @myScores.each do |score| %>
-      <tr>
-        <td><%= score.deck.name %></td>
-        <td class="t-center"><%= score.score %></td>
-        <td><%= score.created_at.strftime '%e/%m/%y' %></td>
-      </tr>
-      <% end %>
-    </table>
-    <% end %>
+  <div class="panel-heading">
+    Recent Scores
   </div>
+
+  <div class="panel-body score-table">
+    <% if @myScores.length == 0 %>
+    <p>You don't seem to have any scores yet, play a deck to get started!</p>
+  <% else %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= link_to 'Deck', :sort => 'deck_id' %></th>
+          <th class="t-center"><%= link_to 'Score', :sort => 'score' %></th>
+          <th><%= link_to 'Date', :sort => 'created_at' %></th>
+        </tr>
+      </thead>
+    </th>
+    <% @myScores.each do |score| %>
+    <tr>
+      <td><%= score.deck.name %></td>
+      <td class="t-center"><%= score.score %></td>
+      <td><%= score.created_at.strftime '%e/%m/%y' %></td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
 </div>
 </div>
 </div>
