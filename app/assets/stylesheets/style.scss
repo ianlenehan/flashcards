@@ -31,6 +31,12 @@ body {
   width: 80vw;
   margin: 0 auto;
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
 #deckList {
   text-align: center;
 }
@@ -66,13 +72,24 @@ img.profile {
   a {
     color: white !important;
   };
-  .dropdown-menu a {
-    color: grey !important;
+  .dropdown-menu {
+    background-color: $brand-color;
+    border: 1px solid $brand-color-light;
+    a {
+      color: white;
+    }
+    a:hover {
+      background-color: $brand-color-light;
+    }
   }
-  .dropdown-menu a:hover {
+  .dropdown a:focus {
+    background-color: $brand-color-light;
+  }
+  .dropdown-menu > .nav .open > a, .nav .open > a:hover, .nav .open > a:focus, .nav .open > a:active, .nav .open > a:visited {
     background-color: $brand-color-light;
   }
 }
+<<<<<<< HEAD
 ul.dropdown-menu {
   background-color: $brand-color;
 }
@@ -80,6 +97,17 @@ ul.dropdown-menu {
 a.dropdown-toggle:hover {
   background-color: $brand-color-light !important;
 }
+=======
+
+
+
+a.dropdown-toggle:hover, .dropdown.open {
+    background-color: $brand-color-light !important;
+  }
+
+
+
+>>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
 #tagList {
   height: 100%;
   width: 100px;
@@ -194,12 +222,26 @@ h2 {
   margin: 0 0 6px 10px;
 }
 #gameSummary {
+  background-color: white;
   min-height: 50vh;
   width: 50vw;
-  border: 3px solid black;
   border-radius: 10px;
   margin: 100px auto;
+  box-shadow: 0px 2px 12px #DCDCDC;
+  padding: 10px;
 }
+
+#scoresGraph {
+  width: 500px;
+  height: 300px;
+}
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
 .overlay {
   display: none;
   background: rgba(0, 0, 0, 0.5);
@@ -259,6 +301,7 @@ li:hover {
 #user-selection {
   padding-top: 20px;
 }
+
 #gameSummary {
   min-height: 50vh;
   width: 50vw;
@@ -269,7 +312,8 @@ li:hover {
 }
 .actions > input,
 .uploads > input,
-button {
+
+button, .actions > input, .uploads > input {
   border: none !important;
   background: $secondary-color-light !important;
   border-radius: 3px;
@@ -306,6 +350,7 @@ hr {
     width: 140px;
   }
 }
+
 .num-favs {
   font-size: 9px;
   color: gainsboro;

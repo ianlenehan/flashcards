@@ -25,16 +25,53 @@
   <% end %>
   <hr>
 </div> <!-- main div profile -->
+<div class="badge-container">
+  <h3>Achievements</h3>
+  <p> Earn more badges by scoring points on decks!<p>
+  <% if @user.lifetime_score >= 0 %>
+  <div class="youngScholar inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 50 %>
+  <div class="firstFifty inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 100 %>
+  <div class="hundredClub inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 200 %>
+  <div class="twoHundredClub inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 300 %>
+  <div class="threeHundredClub inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 400 %>
+  <div class="bookWorm inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 600 %>
+  <div class="highAchiever inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 800 %>
+  <div class="silverCircle inline"></div>
+  <% end %>
+  <% if @user.lifetime_score > 1500 %>
+  <div class="goldCircle inline"></div>
+  <% end %>
+  <% if @user.lifetime_score >= 3000 %>
+  <div class="ninja inline"></div>
+  <% end %>
+
+  <hr>
+</div> <!-- main div profile -->
 <div class="generic-container">
-  <h3>My Decks</h3>
+  <h3>Decks</h3>
   <ul id="my-decks-list">
     <% @myDecks.each do |deck| %>
-    <li class="my-deck-name" data-id="<%= deck.id %>"></li><%= deck.name %>
+
+    <li class="my-deck-name" data-id="<%= deck.id %>">//</li><%= link_to deck.name, deck_path(deck.id)%>
     <% end %>
   </ul>
   <div class="panel panel-default">
     <div class="panel-heading">
-      My Scores
+      Recent Scores
     </div>
     <div class="panel-body score-table">
       <table class="table table-striped">
