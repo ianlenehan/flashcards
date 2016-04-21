@@ -87,5 +87,4 @@ app.DecksView = Backbone.View.extend({
 
   }
 
-
 });
