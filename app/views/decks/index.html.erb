@@ -2,7 +2,11 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"> All Decks</h3> <span><%= link_to 'New', new_deck_path %></span>
+    <% if @current_user.admin == true %>
+    <h3 class="panel-title">All Decks</h3> <span><%= link_to '+ Add', new_deck_path %></span>
+    <% else %>
+    <h3 class="panel-title">My Decks</h3> <span><%= link_to '+ Add', new_deck_path %></span>
+    <% end %>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
@@ -22,7 +26,7 @@
     <td><%= deck.user.name_first %> <%= deck.user.name_last %></td>
     <td><%= link_to 'Show', deck %></td>
     <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-    <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </tbody>

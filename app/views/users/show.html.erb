@@ -19,10 +19,6 @@
     <strong>Lifetime score:</strong>
     <%= @user.lifetime_score %>
   </p>
-
-  <% if @current_user.present? && @current_user.admin %>
-  <%= link_to 'All Users', users_path %>
-  <% end %>
   <hr>
 </div> <!-- main div profile -->
 <div class="badge-container">
@@ -64,16 +60,30 @@
 <div class="generic-container">
   <h3>Decks</h3>
   <ul id="my-decks-list">
+
+    <% if @myDecks.length == 0 %>
+    <p>
+      You don't have any decks.. <%= link_to "Create a deck", new_deck_path %>
+    </p>
+    <% else %>
     <% @myDecks.each do |deck| %>
 
     <li class="my-deck-name" data-id="<%= deck.id %>">//</li><%= link_to deck.name, deck_path(deck.id)%>
     <% end %>
+    <% end %>
   </ul>
+
+
   <div class="panel panel-default">
     <div class="panel-heading">
       Recent Scores
     </div>
+
+
     <div class="panel-body score-table">
+      <% if @myScores.length == 0 %>
+      <p>You don't seem to have any scores yet, play a deck to get started!</p>
+      <% else %>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -91,6 +101,7 @@
       </tr>
       <% end %>
     </table>
+    <% end %>
   </div>
 </div>
 </div>
