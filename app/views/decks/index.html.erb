@@ -24,7 +24,7 @@
     <td><%= deck.name %></td>
     <td><%= deck.cards.length %></td>
     <td><%= deck.user.name_first %> <%= deck.user.name_last %></td>
-    <td><%= link_to 'Show', deck %></td>
+    <td><%= link_to 'Cards', deck %></td>
     <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
     <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
