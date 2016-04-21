@@ -190,11 +190,11 @@ a.dropdown-toggle:hover, .dropdown.open {
 }
 .tagSpan {
   display: inline-block;
-  padding: 5px 20px;
+  padding: 5px 9px;
   background-color: $secondary-color;
   color: white;
   border-radius: 3px;
-  margin: 10px;
+  margin: 7px;
 }
 .tagSpan:hover {
   background-color: $secondary-color-light;
@@ -235,14 +235,18 @@ h2 {
   width: 25px;
   margin: 0 0 6px 10px;
 }
+
 #gameSummary {
   background-color: white;
   min-height: 50vh;
   width: 50vw;
   border-radius: 10px;
-  margin: 100px auto;
+  margin: 50px auto;
   box-shadow: 0px 2px 12px #DCDCDC;
   padding: 10px;
+  a {
+    margin-right: 10px;
+  }
 }
 
 #scoresGraph {
@@ -425,4 +429,8 @@ form {
     margin-bottom: 20px;
     min-width: 200px;
   }
+}
+
+.glyphicon-remove {
+  padding-left: 5px;
 }
