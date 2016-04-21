@@ -31,12 +31,7 @@ body {
   width: 80vw;
   margin: 0 auto;
 }
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
 #deckList {
   text-align: center;
 }
@@ -89,7 +84,7 @@ img.profile {
     background-color: $brand-color-light;
   }
 }
-<<<<<<< HEAD
+
 ul.dropdown-menu {
   background-color: $brand-color;
 }
@@ -97,7 +92,7 @@ ul.dropdown-menu {
 a.dropdown-toggle:hover {
   background-color: $brand-color-light !important;
 }
-=======
+
 
 
 
@@ -107,7 +102,7 @@ a.dropdown-toggle:hover, .dropdown.open {
 
 
 
->>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
+
 #tagList {
   height: 100%;
   width: 100px;
@@ -148,10 +143,11 @@ a.dropdown-toggle:hover, .dropdown.open {
   text-align: center;
   font-family: 'Martel Sans', sans-serif;
   padding-top: 10px;
+  margin-bottom: 23px;
 }
 #profilePicture {
   width: 150px;
-  margin: 50px auto;
+  margin: 78px auto 10px auto;
   z-index: 100000;
   text-align: center;
   border-radius: 50%;
@@ -159,7 +155,7 @@ a.dropdown-toggle:hover, .dropdown.open {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    margin-bottom: 60px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
     border: 3px solid white;
   }
@@ -235,13 +231,7 @@ h2 {
   width: 500px;
   height: 300px;
 }
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> 9d8280884e655b233a6553e4eca668551bed5dc1
 .overlay {
   display: none;
   background: rgba(0, 0, 0, 0.5);
@@ -275,6 +265,7 @@ h2 {
   top: -9px;
   right: -11px;
 }
+
 #add-label,
 .deck-input {
   width: 95%;
@@ -371,4 +362,16 @@ hr {
 
 .activeTagsContainer:hover {
   cursor: pointer;
+}
+
+#lifetimeScore {
+  font-size: 40px;
+  color: #3FD7F3;
+  margin-bottom: 30px;
+
+}
+
+#scoreHeader {
+  font-size: 16px;
+  margin-bottom: 0;
 }
