@@ -138,7 +138,11 @@ app.AppRouter = Backbone.Router.extend({
         app.decksView = new app.DecksView({
           collection: app.myDecks,
         });
-        app.decksView.myDecksRender();
+        app.newFavourites = new app.Favourites();
+        app.newFavourites.fetch().done( function () {
+          app.favArray = app.newFavourites.pluck('deck_id');
+          app.decksView.myDecksRender();
+        });
       });
 
     } else {
