@@ -88,9 +88,6 @@ img.profile {
 }
 
 
-ul.dropdown-menu {
-  background-color: $brand-color;
-}
 
 a.dropdown-toggle:hover, .dropdown.open {
     background-color: $brand-color-light !important;
@@ -357,9 +354,4 @@ hr {
     margin: 5px;
     width: 140px;
   }
-}
-
-.num-favs {
-  font-size: 9px;
-  color: gainsboro;
 }
