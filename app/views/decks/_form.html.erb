@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, @categories.order(:name),:id, :name %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
