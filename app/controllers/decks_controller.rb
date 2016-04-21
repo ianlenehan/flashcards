@@ -31,16 +31,20 @@ class DecksController < ApplicationController
   # GET /decks/new
   def new
     @deck = Deck.new
+    @categories = Category.all
   end
 
   # GET /decks/1/edit
   def edit
+    @categories = Category.all
   end
+
 
   # POST /decks
   # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
+    @deck.user_id = @current_user.id
     @deck.tag_list.add(:tag_list, parse: true)
 
     respond_to do |format|
@@ -95,6 +99,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:name, :user_id, :tag_list, :deckid, :cardid)
+      params.require(:deck).permit(:name, :user_id, :tag_list, :deckid, :cardid, :category_id)
     end
 end
