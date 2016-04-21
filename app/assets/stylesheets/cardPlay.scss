@@ -61,7 +61,7 @@
 	display: inline-block;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
-  background-image: url('../assets/CardFront.png');
+  background-image: image-url('CardFront.png');
   border-radius: 20px;
   text-align: center;
 }
@@ -71,7 +71,7 @@
 
 	display: inline-block;
 	transform: rotateY(180deg);
-  background-image: url('../assets/CardBack.png');
+  background-image: image-url('CardBack.png');
   border-radius: 20px;
   text-align: center;
 }
