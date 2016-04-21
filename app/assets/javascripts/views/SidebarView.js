@@ -56,7 +56,7 @@ app.SidebarView = Backbone.View.extend({
       var sidebarViewHTML = _.template(sidebarViewTemplate);
       $('#sidebar').html(sidebarViewHTML(app.currentUser.toJSON()));
       $('#sidebar').append('<div id="filter-buttons"><button class="filterbutton" id="mydecksfilter">My Decks</button><br><button class="filterbutton" id="myfavsfilter">Favourited Decks</button></div');
-      var badgeClass = that.getBadgeClass(app.currentUser.get('lifetime_score')); debugger;
+      var badgeClass = that.getBadgeClass(app.currentUser.get('lifetime_score'));
       var $badge = $('<div id="badge"></div>').addClass( badgeClass );
       $('#profilePicture').append($badge);
 
