@@ -43,11 +43,6 @@ app.DecksView = Backbone.View.extend({
           console.log($(event.target).text());
           return tag !== $(event.target).text();
         });
-        //   debugger;
-        // app.tagsView = new app.TagsView({
-        //   collection: app.currentTags
-        // });
-
         app.tagsView.render();
       });
     });
@@ -56,7 +51,7 @@ app.DecksView = Backbone.View.extend({
     this.$el.append('<div id="decks"></div>');
 
     _.each(this.collection, function (deck) {
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '</div>');
+      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<p>Owned by '+ deck.attributes.user.name_first+' '+deck.attributes.user.name_last+'</p></div>');
     });
 
 

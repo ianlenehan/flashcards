@@ -18,6 +18,20 @@ body {
     display: inline;
   }
 }
+
+.deck {
+  position: relative;
+  p {
+    position: absolute;
+    bottom: 0;
+    font-style: italic;
+    font-size: 80%;
+    color: #DEDEDE;
+    margin-left: 10px;
+
+  }
+}
+
 #primaryContent {
   text-align: center;
   display:inline-block;
