@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <div id="profile">
+  <h2>
+  <%= @user.name_first %>
+  <%= @user.name_last %>
+</h2>
+  <hr>
+
   <p>
     <img class="profile" src="<%= @user.photo  %>"/>
   </p>
-  <p>
-    <%= @user.name_first %>
-    <%= @user.name_last %>
-    <%= link_to 'Edit', edit_user_path(@user) %>
 
-  </p>
+  <p><%= @user.email %></p>
 
-  <p>
-    <%= @user.email %>
-  </p>
+  <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
 
-  <p>
-    <strong>Lifetime score:</strong>
-    <%= @user.lifetime_score %>
-  </p>
   <hr>
 </div> <!-- main div profile -->
 <div class="badge-container">
   <h3>Achievements</h3>
-  <p> Earn more badges by scoring points on decks!<p>
+  <p>Lifetime score: <%= @user.lifetime_score %></p>
   <% if @user.lifetime_score >= 0 %>
   <div class="youngScholar inline"></div>
   <% end %>
@@ -54,6 +50,7 @@
   <% if @user.lifetime_score >= 3000 %>
   <div class="ninja inline"></div>
   <% end %>
+  <p class="italic"> Earn more badges by scoring points on decks!<p>
 
   <hr>
 </div> <!-- main div profile -->
