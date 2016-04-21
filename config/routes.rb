@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/home' => 'categories#home'
   delete '/favourites/:id' => 'favourites#destroy'
   post '/cards/:id/remove' => 'cards#remove', :as => 'card_remove'
+  post '/decks/:deckid/add' => 'decks#addCard'
   get '/main' => 'decks#home'
+
 
 
   resources :scores
