@@ -4,7 +4,7 @@ $secondary-color: #FFB268;
 $secondary-color-light: #FFCC9B;
 
 body {
-  margin: 0;
+  margin: 0 0 30px 0;
   font-family: 'Martel Sans', sans-serif !important;
   padding-top: 50px;
   background-image: image-url('bg.png');
@@ -133,9 +133,11 @@ a.dropdown-toggle:hover, .dropdown.open {
   font-size: 10px;
   text-align: center;
 }
+
 .tagItem:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
+
 #sidebar {
   position: fixed;
   display: inline-block;
@@ -143,7 +145,7 @@ a.dropdown-toggle:hover, .dropdown.open {
   width: 17vw;
   top: 0;
   right: 0;
-  background-color: rgb(240, 240, 240);
+  background-color: white;
   z-index: 10;
   align-items: center;
 }
@@ -371,7 +373,7 @@ hr {
   cursor: pointer;
 }
 
-#home-container {
+.home-container {
   width: 65%;
   margin: 0 auto;
   background-color: white;
@@ -409,4 +411,11 @@ hr {
 #scoreHeader {
   font-size: 16px;
   margin-bottom: 0;
+}
+
+form {
+  input {
+    margin-bottom: 20px;
+    min-width: 200px;
+  }
 }
