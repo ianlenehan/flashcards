@@ -18,6 +18,13 @@ body {
     display: inline;
   }
 }
+
+p.italic {
+  font-style: italic;
+  margin-top: 5px;
+  font-size: 85%;
+}
+
 .deck {
   position: relative;
   p {
@@ -297,7 +304,6 @@ li:hover {
 #gameSummary {
   min-height: 50vh;
   width: 50vw;
-  background-image: image-url("CardFront.png");
   border-radius: 10px;
   margin: 100px auto;
   box-shadow: 0 2px 12px #DCDCDC;
