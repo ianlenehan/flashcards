@@ -11,13 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+
+  <div class="form-group">
     <%= f.label :question %><br>
-    <%= f.text_area :question %>
+    <%= f.text_area :question, class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :answer %><br>
-    <%= f.text_area :answer %>
+    <%= f.text_area :answer, class:"form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
