@@ -9,6 +9,7 @@ app.DecksView = Backbone.View.extend({
 
   renderLoop: function () {
     _.each(this.collection, function (deck) {
+
       var count = _.countBy(app.favArray, function (id) {
         return id === deck.attributes.id;
       });
@@ -25,7 +26,7 @@ app.DecksView = Backbone.View.extend({
         word = " favourites";
       }
 
-      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"><img src="assets/favStar.png"> (' + newCount + ')</span></div>');
+      $('#decks').append('<div class="deck" data-deckid="'+deck.attributes.id+'">' + deck.attributes.name + '<br><span class="num-favs"><img src="assets/favStar.png"> (' + newCount + ')</span><br><div class="created-by num-favs">Created by: ' + deck.attributes.user.name_first + " " + deck.attributes.user.name_last + '</div></div>');
     });
   },
 
@@ -56,9 +57,9 @@ app.DecksView = Backbone.View.extend({
     _.each( $('.tagSpan'), function(tagItem) {
 
       $(tagItem).on('click', function(event) {
-
+        console.log("click event fired");
         app.activeTags = _.filter(app.activeTags, function(tag) {
-          return tag !== $(event.target).text();
+          return tag !== $(event.target).parent().text();
         });
 
         app.tagsView.render();
