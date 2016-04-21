@@ -11,6 +11,9 @@ body {
   background-size: auto;
 }
 
+.panel-heading {
+  background-color: #FFF4E9 !important;
+}
 .panel {
   max-width: 50vw;
   margin: 20px auto;
@@ -180,11 +183,11 @@ a.dropdown-toggle:hover, .dropdown.open {
 }
 .tagSpan {
   display: inline-block;
-  padding: 5px 20px;
+  padding: 5px 9px;
   background-color: $secondary-color;
   color: white;
   border-radius: 3px;
-  margin: 10px;
+  margin: 7px;
 }
 .tagSpan:hover {
   background-color: $secondary-color-light;
@@ -419,4 +422,8 @@ form {
     margin-bottom: 20px;
     min-width: 200px;
   }
+}
+
+.glyphicon-remove {
+  padding-left: 5px;
 }

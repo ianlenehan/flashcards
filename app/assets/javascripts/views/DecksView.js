@@ -50,7 +50,7 @@ app.DecksView = Backbone.View.extend({
       $tagSpan.attr('data-tagName', tag);
       $tagSpan.addClass('tagSpan');
       $tagsDiv.append($tagSpan);
-      $tagsDiv.append('<span class="x">x</span>');
+      $tagSpan.append('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>');
     });
 
     _.each( $('.tagSpan'), function(tagItem) {
