@@ -41,7 +41,7 @@ app.GameCompleteView = Backbone.View.extend({
 
 
 
-        var chartCanvas = $("<canvas id='scoresGraph' width='400' height='300' ></canvas>");
+        var chartCanvas = $("<canvas id='scoresGraph'></canvas>");
         console.log("Chart Canvas is", chartCanvas);
 
         $('#scoresGraphContainer').append(chartCanvas);
@@ -49,27 +49,30 @@ app.GameCompleteView = Backbone.View.extend({
 
 
         var ctx = $("#scoresGraph").get(0).getContext("2d");
-        console.log("context is ",ctx);
+        console.log("context is ", ctx);
 
         var data = {
-            labels: ["","","","",""],
-            datasets: [
-                {
-                    label: "Recent Scores For This Deck. How has your day been?",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: dataToDisplay.reverse()
-                }
-            ]
+          labels: ["", "", "", "", ""],
+          datasets: [{
+            label: "Recent Deck Results",
+            backgroundColor: "#9AEAF9",
+            data: dataToDisplay.reverse()
+          }]
         };
+
 
         var myLineChart = new Chart(ctx, {
           type: "line",
-          data: data
+          data: data,
+          options: {
+      			scales: {
+      				yAxes: [{
+      						ticks: {
+      							beginAtZero: false
+      						}
+      					}]
+      			}
+          }
         });
 
       });
