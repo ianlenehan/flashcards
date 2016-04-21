@@ -57,7 +57,6 @@
 /* front pane, placed above back */
 .play-front {
 	z-index: 2;
-
 	display: inline-block;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
@@ -68,7 +67,6 @@
 
 /* back, initially hidden pane */
 .play-back {
-
 	display: inline-block;
 	transform: rotateY(180deg);
   background-image: url('../assets/CardBack.png');
@@ -79,4 +77,13 @@
 .play-c-title {
   font-size: 150%;
   color: gainsboro;
+}
+
+.dialog-buttons {
+	margin-top: 80px;
+	text-align: center;
+}
+
+#toExistingGame, #toNewGame {
+	width: 75%;
 }

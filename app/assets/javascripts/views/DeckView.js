@@ -26,6 +26,11 @@ app.DeckView = Backbone.View.extend({
       app.router.navigate('/decks/' + app.deck.get("id") + '/play', true);
 
     }
+    $('#close-dialog').on('click', function () {
+      $('.overlay').fadeOut( function() {
+        $('.overlay').empty();
+      });
+    });
   },
 
   // Creates pop up asking the user to confirm playing new deck if they have a game in progress
@@ -35,8 +40,9 @@ app.DeckView = Backbone.View.extend({
     var $overlay = $('<div>').addClass('overlay').css({'display':'block'});
     var $dialog = $('<div>').addClass('dialog');
     $overlay.append($dialog);
-    var content = "<button id='toExistingGame'>Play Existing Game</button><button id='toNewGame'>Play New Game</button>";
+    var content = "<div class='dialog-buttons'><button id='toExistingGame'>Play Existing Game</button><br><br><button id='toNewGame'>Play New Game</button></div>";
     $dialog.html(content);
+    $dialog.append('<img id="close-dialog" src="/assets/closedialog.png" alt="">');
     $('body').prepend($overlay);
 
     // Click handlers to handle both options

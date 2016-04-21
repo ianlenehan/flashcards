@@ -11,14 +11,4 @@ app.MyDecksView = Backbone.View.extend({
     });
   },
 
-  // render: function() {
-  //   app.currentUser.fetch().done(function() {
-  //     var myDecksViewTemplate = $('#myDecksViewTemplate').html();
-  //     var myDecksViewHTML = _.template(myDecksViewTemplate);
-  //     $('#profilePage').html(myDecksViewHTML(app.currentUser.toJSON()));
-  //   });
-
-
-  // }
-
 });
