@@ -12,7 +12,6 @@ app.SidebarView = Backbone.View.extend({
   myDecksView: function () {
     app.currentUser = new app.CurrentUser();
     app.currentUser.fetch().done( function () {
-      console.log(app.currentUser.id);
       app.router.navigate('/user/' + app.currentUser.id + '/mydecks', true);
     });
   },
@@ -20,7 +19,6 @@ app.SidebarView = Backbone.View.extend({
   myFavsView: function () {
     app.currentUser = new app.CurrentUser();
     app.currentUser.fetch().done( function () {
-      console.log(app.currentUser.id);
       app.router.navigate('/user/' + app.currentUser.id + '/myfavs', true);
     });
   },

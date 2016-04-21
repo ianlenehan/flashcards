@@ -39,18 +39,9 @@ app.GameCompleteView = Backbone.View.extend({
           return model.attributes.percent_score;
         });
 
-
-
         var chartCanvas = $("<canvas id='scoresGraph'></canvas>");
-        console.log("Chart Canvas is", chartCanvas);
-
         $('#scoresGraphContainer').append(chartCanvas);
-        console.log("Score graph containet is ", $('#scoresGraphContainer'));
-
-
         var ctx = $("#scoresGraph").get(0).getContext("2d");
-        console.log("context is ", ctx);
-
         var data = {
           labels: ["", "", "", "", ""],
           datasets: [{
