@@ -39,7 +39,7 @@ app.DeckView = Backbone.View.extend({
     var $overlay = $('<div>').addClass('overlay').css({'display':'block'});
     var $dialog = $('<div>').addClass('dialog');
     $overlay.append($dialog);
-    var content = "<div class='dialog-buttons'><button id='toExistingGame'>Play Existing Game</button><br><br><button id='toNewGame'>Play New Game</button></div>";
+    var content = "<p id='existingGame'>You already have a game in progress!</p><div class='dialog-buttons'><button id='toExistingGame'>Play Existing Game</button><br><br><button id='toNewGame'>Start New Game</button></div>";
     $dialog.html(content);
     $dialog.append('<img id="close-dialog" src="/assets/closedialog.png" alt="">');
     $('body').prepend($overlay);
@@ -85,7 +85,7 @@ app.DeckView = Backbone.View.extend({
 
   showDeckDialog: function(e) {
     var that = this;
-    app.cardID = e.currentTarget.dataset.id;
+    app.cardID = e.currentTarget.dataset.cardId;
     $('.overlay').fadeIn();
     var dialogTemplate = $('#deckDialogTemplate').html();
     var dialogHTML = _.template(dialogTemplate);
