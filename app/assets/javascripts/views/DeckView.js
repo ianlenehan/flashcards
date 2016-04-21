@@ -35,8 +35,7 @@ app.DeckView = Backbone.View.extend({
 
   // Creates pop up asking the user to confirm playing new deck if they have a game in progress
   existingGamePrompt: function(existingGameDeck, requestedGameDeck) {
-    console.log("hello");
-    // THIS IS JUST FOR TESTING PROOF OF CONCEPT, NEEDS TO BE REFACTORED INTO TEMPLATE OR SOMETHING
+
     var $overlay = $('<div>').addClass('overlay').css({'display':'block'});
     var $dialog = $('<div>').addClass('dialog');
     $overlay.append($dialog);
