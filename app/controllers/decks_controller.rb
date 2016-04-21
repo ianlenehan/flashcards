@@ -6,13 +6,23 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.includes(:cards)
+
+    if @current_user.admin == true
+      @decks = Deck.includes(:cards)
+    else
+    @decks = @current_user.decks.includes(:cards)
+    end
+
+
   end
+
+
 
   # GET /decks/1
   # GET /decks/1.json
   def show
     flash[:deck_id] = @deck.id
+
   end
 
   # GET /decks/new
