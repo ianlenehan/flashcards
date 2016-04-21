@@ -5,6 +5,7 @@
 * {
 	font-family: 'Open Sans', sans-serif;
 }
+
 #cards {
 	width: 900px;
 	height: 100px;
@@ -69,9 +70,12 @@
   border-radius: 20px;
   text-align: center;
 	background-image: image-url('CardBack.png');
+	.c-title {
+		margin-right: 23px;
+	}
 }
 
-.question, .answer {
+.question, .answer, .play-question, .play-answer {
 	font-family: 'Annie Use Your Telescope', cursive;
 	font-size: 24px;
 	padding-top: 30px;

@@ -11,8 +11,15 @@ body {
   background-size: auto;
 }
 
+.leaderboard {
+  margin-top: 0 !important;
+  float: right;
+  width: 23vw;
+}
+
 .panel-heading {
   background-color: #FFF4E9 !important;
+
 }
 .panel {
   max-width: 50vw;
@@ -228,14 +235,18 @@ h2 {
   width: 25px;
   margin: 0 0 6px 10px;
 }
+
 #gameSummary {
   background-color: white;
   min-height: 50vh;
   width: 50vw;
   border-radius: 10px;
-  margin: 100px auto;
+  margin: 50px auto;
   box-shadow: 0px 2px 12px #DCDCDC;
   padding: 10px;
+  a {
+    margin-right: 10px;
+  }
 }
 
 #scoresGraph {
@@ -314,7 +325,7 @@ li:hover {
 // .actions > input,
 // .uploads > input,
 
-button, .actions > input, .upload > button {
+button, .actions > input, .upload > button, input[type=submit] {
   border: none !important;
   background: $secondary-color-light !important;
   border-radius: 3px;
@@ -388,9 +399,9 @@ hr {
 }
 
 #home-text {
-  width: 60%;
+  width: 35vw;
   display: inline-block;
-  margin-right: 20px;
+  text-align: justify;
 }
 
 #home-img {
