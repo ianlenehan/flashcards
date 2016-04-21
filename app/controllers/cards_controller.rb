@@ -21,7 +21,11 @@ class CardsController < ApplicationController
 
   # GET /cards/1/edit
   def edit
+
     @deck = Deck.find(flash[:deck_id])
+    if @current_user.id != @card.user.id
+      redirect_to @deck, notice: "You can't edit this card"
+    end
     flash.keep
   end
 
