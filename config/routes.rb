@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/home' => 'decks#home'
+  get '/home' => 'categories#home'
   delete '/favourites/:id' => 'favourites#destroy'
   post '/cards/:id/remove' => 'cards#remove', :as => 'card_remove'
+  get '/main' => 'decks#home'
 
 
   resources :scores
