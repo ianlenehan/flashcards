@@ -6,13 +6,16 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-
-    if @current_user.admin == true
+    if request.xhr?
       @decks = Deck.includes(:cards)
-    else
-    @decks = @current_user.decks.includes(:cards)
-    end
 
+    else
+      if @current_user.admin == true
+        @decks = Deck.includes(:cards)
+      else
+      @decks = @current_user.decks.includes(:cards)
+      end
+    end
 
   end
 
