@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :category %>
-    <%= f.collection_select :category_id, @categories.order(:name),:id, :name %>
+    <%= f.collection_select :category_id, @categories.order(:name),:id, :name, {class:"form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name, class:"form-control" %>
   </div>
   <% if @current_user.admin == true %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id, class:"form-control" %>
   </div>
   <% end %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tag_list %><br>
-    <%= f.text_field(:tag_list, value: @deck.tag_list.join(", ")) %>
+    <%= f.text_field(:tag_list , class:"form-control", value: @deck.tag_list.join(", ")) %>
   </div>
   <div class="actions">
     <%= f.submit %>
