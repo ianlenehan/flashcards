@@ -45,7 +45,7 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(deck_params)
     @deck.user_id = @current_user.id
-    @deck.tag_list.add(:tag_list, parse: true)
+    @deck.tag_list.add(params[:tag_list], parse: true)
 
     respond_to do |format|
       if @deck.save
