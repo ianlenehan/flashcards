@@ -13,8 +13,8 @@ app.DecksView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("render called");
     this.$el.empty();
+    console.log(app.favArray);
     $('#categoryList').remove();
     app.categoryName = this.model.attributes.name;
     app.categoryId = this.model.attributes.id;
