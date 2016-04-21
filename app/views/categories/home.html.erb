@@ -9,10 +9,29 @@
     <p>Browse decks created by our community and either favourite a deck or add their cards to one of your decks.</p>
     <p>Play regularly to train your brain to remember, whilst also creating high scores and accumulating a lifetime score. See how you compare against the Glance community!</p>
     <br><br>
-    <button>Let's Begin!</button>
-  </div>
 
-  <div id="home-img">
-    <img src="assets/dog.jpg" alt="">
+    <%= button_to "Let's Begin!", '/main', :method => 'get' %>
+  </div>
+  <div class="panel panel-default leaderboard">
+  <div class="panel-heading">
+    Current Leaderboard
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th class="t-center">Score</th>
+        </tr>
+      </thead>
+    </th>
+    <% @users_sorted.each do |user| %>
+    <tr>
+      <td><%= user.name_first %> <%= user.name_last %></td>
+      <td class="t-center"><%= user.lifetime_score %></td>
+    </tr>
+    <% end %>
+  </table>
+  </div>
   </div>
 </div>
