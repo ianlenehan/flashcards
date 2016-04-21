@@ -23,7 +23,7 @@
   <% end %>
   <div class="field">
     <%= f.label :tag_list %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field(:tag_list, value: @deck.tag_list.join(", ")) %>
   </div>
   <div class="actions">
     <%= f.submit %>
