@@ -7,8 +7,16 @@ app.PlayCardView = Backbone.View.extend({
   events: {
     'click #submit-answer': 'checkAnswer',
     'click #next-card': 'getNextCard',
-    'click #finish-game': 'finishGame'
+    'click #finish-game': 'finishGame',
+    'keypress #input-answer' : 'checkForEnter'
   },
+
+  checkForEnter: function (e) {
+  app.ENTER_KEY = 13;
+  if (e.which === app.ENTER_KEY) {
+    this.checkAnswer();
+  }
+},
 
   render: function() {
     this.$el.empty();
@@ -85,7 +93,7 @@ app.PlayCardView = Backbone.View.extend({
   },
 
   finishGame: function() {
-    
+
     app.router.navigate('/finish', true);
   }
 
