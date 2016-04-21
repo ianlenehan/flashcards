@@ -10,9 +10,7 @@ app.TagsView = Backbone.View.extend({
     $('#tagList').remove();
     tagsTemplate = $('#tagsTemplate').html();
     $('#primaryContent').append(tagsTemplate);
-    console.log("tags view render called");
 
-    
     var inactiveTags = _.difference(app.tagsView.collection, app.activeTags);
 
     _.each(inactiveTags, function(tag) {
@@ -52,8 +50,12 @@ app.TagsView = Backbone.View.extend({
           collection: tagFilteredDecks,
           model: app.current_category
         });
+        app.newFavourites = new app.Favourites();
+        app.newFavourites.fetch().done( function () {
+          app.favArray = app.newFavourites.pluck('deck_id');
+          app.decksView.render();
 
-        app.decksView.render();
+        });
 
   }
 

@@ -79,10 +79,24 @@ img.profile {
   a {
     color: white !important;
   };
-  .dropdown li {
+  .dropdown-menu a {
     color: grey !important;
   }
+  .dropdown-menu a:hover {
+    background-color: $brand-color-light;
+  }
 }
+
+
+ul.dropdown-menu {
+  background-color: $brand-color;
+}
+
+a.dropdown-toggle:hover, .dropdown.open {
+    background-color: $brand-color-light !important;
+  }
+
+
 
 #tagList {
   height: 100%;
@@ -308,6 +322,12 @@ button:hover, .actions > input:hover, .uploads > input:hover {
   background: $secondary-color !important;
 }
 
+
+
+
+
+
+
 .t-center {
   text-align: center !important;
 }
@@ -337,4 +357,9 @@ hr {
     margin: 5px;
     width: 140px;
   }
+}
+
+.num-favs {
+  font-size: 9px;
+  color: gainsboro;
 }
