@@ -88,6 +88,7 @@ app.AppRouter = Backbone.Router.extend({
       app.current_category = category;
       app.decks = new app.Decks();
       app.decks.fetch().done(function() {
+
         var matchingDecks = app.decks.where({
           category_id: app.cat_id
         });
@@ -101,16 +102,7 @@ app.AppRouter = Backbone.Router.extend({
           collection: matchingDecks,
           model: category
         });
-
-        app.newFavourites = new app.Favourites();
-        app.newFavourites.fetch().done( function () {
-          app.favArray = app.newFavourites.pluck('deck_id');
-          app.decksView.render();
-        });
-
-
-
-
+        app.decksView.render();
 
         app.tagsView = new app.TagsView({
           collection: app.currentTags,
@@ -167,7 +159,13 @@ app.AppRouter = Backbone.Router.extend({
             app.decksView = new app.DecksView({
               collection: filteredDecks,
             });
-            app.decksView.myDecksRender();
+
+            app.newFavourites = new app.Favourites();
+            app.newFavourites.fetch().done( function () {
+              app.favArray = app.newFavourites.pluck('deck_id');
+              app.decksView.myDecksRender();
+            });
+
           });
         });
     }
