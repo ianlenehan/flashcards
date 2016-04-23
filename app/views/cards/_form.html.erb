@@ -15,11 +15,11 @@
 
   <div class="form-group">
     <%= f.label :question %><br>
-    <%= f.text_area :question, class:"form-control" %>
+    <%= f.text_area :question, :required => true, class:"form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :answer %><br>
-    <%= f.text_area :answer, class:"form-control" %>
+    <%= f.text_area :answer, :required => true, class:"form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
