@@ -3,8 +3,8 @@
 ## The super simple learning game.
 
 ### Team Members
-* Emily Quill (Github)[https://github.com/emilyquill] | (Linkedin)[https://uk.linkedin.com/in/emilyquill]
-* Harrison Reid (Github)[https://github.com/twosmalltrees] | (Linkedin)[https://au.linkedin.com/in/harrisonreid91]
+* Emily Quill | [Github](https://github.com/emilyquill) | [Linkedin](https://uk.linkedin.com/in/emilyquill)
+* Harrison Reid | [Github](https://github.com/twosmalltrees) | [Linkedin](https://au.linkedin.com/in/harrisonreid91)
 * Ian Lenehan
 
 ### Technology Used
